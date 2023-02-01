@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { routes } from "./routes/routes"
+import EntryPage from './views/entry-page/EntryPage';
+import PlayAndXbox from './views/main-page/PlayAndXbox';
+import PlayStation from './views/main-page/PlayStation';
+import Xbox from './views/main-page/Xbox';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EntryPage />} />
+        <Route path={routes.PLAYANDXBOX} element={<PlayAndXbox />}/>
+        <Route path={routes.PLAYSTATION} element={<PlayStation />}/>
+        <Route path={routes.XBOX} element={<Xbox />}/>
+        <Route path="*" element={<div>Not Found</div>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

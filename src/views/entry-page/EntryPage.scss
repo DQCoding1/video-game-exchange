@@ -1,0 +1,118 @@
+@import '../../styles/variables/variables.scss';
+
+.header{
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  background-color: $bg-color;
+  color: $font-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  &__h1{
+    font-size: 3.5rem;
+    @media (max-width: 780px){
+      font-size: 2.5rem;
+    }
+    @media (max-width: 480px){
+      font-size: 1.7rem;
+    }
+  }
+
+  &__p{
+    font-size: 1.5rem;
+    @media (max-width: 780px){
+      font-size: 1.2rem;
+    }
+    @media (max-width: 480px){
+      font-size: 1rem;
+    } 
+  }
+
+  &__h2{
+    font-size: 1.5rem;
+    color: $font-color;
+    @media (max-width: 780px){
+      font-size: 1.2rem;
+    }
+    @media (max-width: 480px){
+
+    }
+  }
+
+  &__containerplayxbox{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__cards{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    @media (max-width: 780px){
+      gap: 1rem;
+    }
+    @media (max-width: 480px){
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card{
+    padding: 2rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2.5rem;
+    border-radius: 5px;
+    animation: upToDown 1s ease-out;
+    opacity: 0.7;
+    background: radial-gradient(rgb(8, 80, 13),rgb(1, 1, 95));
+    &:hover{
+      opacity: 1;
+    }
+    @media (max-width: 780px){
+      padding: 1rem;
+    }
+    @media (max-width: 480px){
+      gap: 1rem;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__card--play{
+    @extend .header__card;
+    background: radial-gradient(rgb(24, 24, 168),rgb(15, 15, 113),rgb(1, 1, 66));
+  }
+
+  &__card--xbox{
+    @extend .header__card;
+    background: radial-gradient(rgb(8, 80, 13),rgb(7, 72, 8),rgb(1, 39, 6));
+  }
+
+  &__img{
+    width: 30%;
+    object-fit: contain;
+    filter: drop-shadow(10px 10px 15px rgb(0, 0, 0));
+    @media (max-width: 480px) {
+      width: 20%;
+    }
+    @media (max-width: 320px) {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+
+@keyframes upToDown {
+  0%{
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+}
