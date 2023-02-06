@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import MainPage from "../../components/MainPage";
 
 const Xbox = () => {
-  return (
-    <div>Xbox</div>
-  )
-}
+  return <MainPage consoleType="Xbox" />;
+};
 
-export default Xbox
+export default Xbox;

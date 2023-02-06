@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import MainPage from "../../components/MainPage";
 
 const PlayAndXbox = () => {
-  return (
-    <div>PlayAndXbox</div>
-  )
-}
+  return <MainPage consoleType="PlayStation And Xbox" />;
+};
 
-export default PlayAndXbox
+export default PlayAndXbox;
