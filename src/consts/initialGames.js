@@ -62,18 +62,18 @@ export const allInitialGames = [
   {
     userName: "user4",
     nameOfGame: "resident evil 5",
-    consoleType: "playStation 5",
+    consoleType: "playStation 4",
     isNew: true,
   },
   {
     userName: "user1",
-    nameOfGame: "halo 4",
-    consoleType: "playStation 3",
+    nameOfGame: "halo collection",
+    consoleType: "xbox one",
     isNew: true,
   },
   {
     userName: "user6",
-    nameOfGame: "dragon ball racing blast",
+    nameOfGame: "dragon ball xenoverse 2",
     consoleType: "playStation 4",
     isNew: true,
   },
@@ -97,8 +97,8 @@ export const allInitialGames = [
   },
   {
     userName: "user4",
-    nameOfGame: "call of duty modern warfare",
-    consoleType: "playStation 4",
+    nameOfGame: "elden ring",
+    consoleType: "playStation 5",
     isNew: false,
   },
   {
@@ -109,13 +109,13 @@ export const allInitialGames = [
   },
   {
     userName: "user1",
-    nameOfGame: "grand theft auto 5",
+    nameOfGame: "grand theft auto",
     consoleType: "playStation 5",
     isNew: true,
   },
   {
     userName: "user6",
-    nameOfGame: "gears of war judgment",
+    nameOfGame: "atlas fallen",
     consoleType: "xbox series",
     isNew: true,
   },
@@ -133,7 +133,7 @@ export const allInitialGames = [
   },
   {
     userName: "user3",
-    nameOfGame: "god of war 3",
+    nameOfGame: "god of war",
     consoleType: "playStation 3",
     isNew: false,
   },

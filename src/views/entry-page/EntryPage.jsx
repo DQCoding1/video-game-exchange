@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { routes } from "../../routes/routes";
-import playLogo from "../../assets/play-logo.png";
-import xboxLogo from "../../assets/xbox-logo.png";
+import playLogo from "../../assets/logos/play-logo.png";
+import xboxLogo from "../../assets/logos/xbox-logo.png";
 import "./EntryPage.scss";
 
 const EntryPage = () => {

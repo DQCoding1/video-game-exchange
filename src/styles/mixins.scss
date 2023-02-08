@@ -1,0 +1,6 @@
+@mixin btn ($bgcolor, $text-color) {
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  background: $bgcolor;
+  color: $text-color;  
+}

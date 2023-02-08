@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { routes } from "../routes/routes";
 import { NavLink } from "react-router-dom";
+import "./FilterForm.scss";
 
 const FilterForm = ({
   consoleType,
@@ -110,210 +112,299 @@ const FilterForm = ({
     newOrUsedRef.refNewAndUsed.current.checked = true;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const inputValue = inputText.toLowerCase().trim();
-    const nameOfGameMatches = defaultGames.filter((item) =>
-      item.nameOfGame.toLowerCase().includes(inputValue)
-    );
-    setCurrentGames(nameOfGameMatches);
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        <li>
-          <input
-            type="text"
-            id="inputFindGame"
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-          />
-        </li>
-        <li>
-          <label htmlFor="inputFindGame">Find Some Game</label>
-        </li>
-        <li>
-          <input type="submit" value="Search" />
-        </li>
-      </ul>
-      <ul>
-        <li>
+    <>
+      <ul className="consoles">
+        <li className="consoles__consoleContainer">
           <NavLink
             to={routes.PLAYANDXBOX}
             onClick={() => backToInitialGames(allGames)}
+            className={({ isActive }) =>
+              isActive
+                ? "consoles__playAndXboxLink--on"
+                : "consoles__playAndXboxLink--off"
+            }
           >
             PlayStation And Xbox
           </NavLink>
           {consoleType === "PlayStation And Xbox" && (
-            <ul>
-              <li onClick={() => filterSpecificConsole("playStation 3")}>
+            <ul className="consoles__lists">
+              <li
+                onClick={() => filterSpecificConsole("playStation 3")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refPlay3}
                   name="allConsoles"
                   id="playStation 3"
                 />
-                <label htmlFor="playStation 3">playStation 3</label>
+                <label htmlFor="playStation 3" className="consoles__label">
+                  playStation 3
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("playStation 4")}>
+              <li
+                onClick={() => filterSpecificConsole("playStation 4")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refPlay4}
                   name="allConsoles"
                   id="playStation 4"
                 />
-                <label htmlFor="playStation 4">playStation 4</label>
+                <label htmlFor="playStation 4" className="consoles__label">
+                  playStation 4
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("playStation 5")}>
+              <li
+                onClick={() => filterSpecificConsole("playStation 5")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refPlay5}
                   name="allConsoles"
                   id="playStation 5"
                 />
-                <label htmlFor="playStation 5">playStation 5</label>
+                <label htmlFor="playStation 5" className="consoles__label">
+                  playStation 5
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("xbox 360")}>
+              <li
+                onClick={() => filterSpecificConsole("xbox 360")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refXbox360}
                   name="allConsoles"
                   id="xbox 360"
                 />
-                <label htmlFor="xbox 360">xbox 360</label>
+                <label htmlFor="xbox 360" className="consoles__label">
+                  xbox 360
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("playStation xbox one")}>
+              <li
+                onClick={() => filterSpecificConsole("xbox one")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refXboxOne}
                   name="allConsoles"
                   id="xbox one"
                 />
-                <label htmlFor="xbox one">xbox one</label>
+                <label htmlFor="xbox one" className="consoles__label">
+                  xbox one
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("xbox series")}>
+              <li
+                onClick={() => filterSpecificConsole("xbox series")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refXboxSeries}
                   name="allConsoles"
                   id="xbox series"
                 />
-                <label htmlFor="xbox series">xbox series</label>
+                <label htmlFor="xbox series" className="consoles__label">
+                  xbox series
+                </label>
               </li>
             </ul>
           )}
         </li>
-        <li>
+        <li className="consoles__consoleContainer">
           <NavLink
             to={routes.PLAYSTATION}
             onClick={() => backToInitialGames(playGames)}
+            className={({ isActive }) =>
+              isActive ? "consoles__playLink--on" : "consoles__playLink--off"
+            }
           >
             PlayStation
           </NavLink>
           {consoleType === "PlayStation" && (
-            <ul>
-              <li onClick={() => filterSpecificConsole("playStation 3")}>
+            <ul className="consoles__lists">
+              <li
+                onClick={() => filterSpecificConsole("playStation 3")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refPlay3}
                   name="allConsoles"
                   id="playStation 3"
                 />
-                <label htmlFor="playStation 3">playStation 3</label>
+                <label htmlFor="playStation 3" className="consoles__label">
+                  playStation 3
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("playStation 4")}>
+              <li
+                onClick={() => filterSpecificConsole("playStation 4")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refPlay4}
                   name="allConsoles"
                   id="playStation 4"
                 />
-                <label htmlFor="playStation 4">playStation 4</label>
+                <label htmlFor="playStation 4" className="consoles__label">
+                  playStation 4
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("playStation 5")}>
+              <li
+                onClick={() => filterSpecificConsole("playStation 5")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refPlay5}
                   name="allConsoles"
                   id="playStation 5"
                 />
-                <label htmlFor="playStation 5">playStation 5</label>
+                <label htmlFor="playStation 5" className="consoles__label">
+                  playStation 5
+                </label>
               </li>
             </ul>
           )}
         </li>
-        <li>
+        <li className="consoles__consoleContainer">
           <NavLink
             to={routes.XBOX}
             onClick={() => backToInitialGames(xboxGames)}
+            className={({ isActive }) =>
+              isActive ? "consoles__xboxLink--on" : "consoles__xboxLink--off"
+            }
           >
             Xbox
           </NavLink>
           {consoleType === "Xbox" && (
-            <ul>
-              <li onClick={() => filterSpecificConsole("xbox 360")}>
+            <ul className="consoles__lists">
+              <li
+                onClick={() => filterSpecificConsole("xbox 360")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refXbox360}
                   name="allConsoles"
                   id="xbox 360"
                 />
-                <label htmlFor="xbox 360">xbox 360</label>
+                <label htmlFor="xbox 360" className="consoles__radio">
+                  xbox 360
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("playStation xbox one")}>
+              <li
+                onClick={() => filterSpecificConsole("xbox one")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refXboxOne}
                   name="allConsoles"
                   id="xbox one"
                 />
-                <label htmlFor="xbox one">xbox one</label>
+                <label htmlFor="xbox one" className="consoles__label">
+                  xbox one
+                </label>
               </li>
-              <li onClick={() => filterSpecificConsole("xbox series")}>
+              <li
+                onClick={() => filterSpecificConsole("xbox series")}
+                className="consoles__li"
+              >
                 <input
                   type="radio"
+                  className="consoles__radio"
                   ref={consolesRef.refXboxSeries}
                   name="allConsoles"
                   id="xbox series"
                 />
-                <label htmlFor="xbox series">xbox series</label>
+                <label htmlFor="xbox series" className="consoles__label">
+                  xbox series
+                </label>
               </li>
             </ul>
           )}
         </li>
       </ul>
-      <ul>
-        <li onClick={filterNewGames}>
+      <ul className="newOrUsedContainer">
+        <li onClick={filterNewGames} className="newOrUsedContainer__li">
           <input
             type="radio"
+            className="newOrUsedContainer__radio"
             name="newOrUsed"
             id="newGame"
             ref={newOrUsedRef.refNew}
           />
-          <label htmlFor="newGame">New games</label>
+          <label htmlFor="newGame" className="newOrUsedContainer__label">
+            New games
+          </label>
         </li>
-        <li onClick={filterUsedGames}>
+        <li onClick={filterUsedGames} className="newOrUsedContainer__li">
           <input
             type="radio"
+            className="newOrUsedContainer__radio"
             name="newOrUsed"
             id="usedGame"
             ref={newOrUsedRef.refUsed}
           />
-          <label htmlFor="usedGame">Used Games</label>
+          <label htmlFor="usedGame" className="newOrUsedContainer__label">
+            Used Games
+          </label>
         </li>
-        <li onClick={filterNewAndUsedGames}>
+        <li onClick={filterNewAndUsedGames} className="newOrUsedContainer__li">
           <input
             type="radio"
+            className="newOrUsedContainer__radio"
             name="newOrUsed"
             id="newAndUsed"
             ref={newOrUsedRef.refNewAndUsed}
             defaultChecked
           />
-          <label htmlFor="newAndUsed">New and Used Games</label>
+          <label htmlFor="newAndUsed" className="newOrUsedContainer__label">
+            New and Used Games
+          </label>
         </li>
       </ul>
-    </form>
+      <ul className="search">
+        <li className="search__labelContainer">
+          <label htmlFor="inputFindGame" className="search__label">
+            Find Some Game
+          </label>
+        </li>
+        <li className="search__inputContainer">
+          <input
+            type="text"
+            className="search__input"
+            id="inputFindGame"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
+        </li>
+        <li className="search__submitContainer">
+          <input type="submit" value="Search" className="search__submit" />
+        </li>
+      </ul>
+      <Link to={""} className="linkToPost">
+        Post a game
+      </Link>
+    </>
   );
 };
 
