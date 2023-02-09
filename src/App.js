@@ -14,7 +14,10 @@ function App() {
         <Route path={routes.PLAYANDXBOX} element={<PlayAndXbox />} />
         <Route path={routes.PLAYSTATION} element={<PlayStation />} />
         <Route path={routes.XBOX} element={<Xbox />} />
-        <Route path={`${routes.SPECIFICGAME}/:idSpecificGame`} element={<SpecificGame />}/>
+        <Route
+          path={`${routes.SPECIFICGAME}/:idSpecificGame`}
+          element={<SpecificGame />}
+        />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     </BrowserRouter>

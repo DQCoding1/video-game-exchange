@@ -126,7 +126,7 @@ export const allInitialGames = [
     id: uuidv4(),
     userName: "user1",
     nameOfGame: "the evil within 2",
-    consoleType: "playStation 5",
+    consoleType: "playStation 4",
     isNew: false,
     description: "the game is used but it's working like a new one"
   },
@@ -197,7 +197,7 @@ export const allInitialGames = [
   {
     id: uuidv4(),
     userName: "user2",
-    nameOfGame: "god of war 4",
+    nameOfGame: "god of war",
     consoleType: "playStation 4",
     isNew: true,
     description: "if you're interested send me a message"
