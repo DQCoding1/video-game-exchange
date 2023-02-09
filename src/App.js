@@ -4,6 +4,7 @@ import EntryPage from "./views/entry-page/EntryPage";
 import PlayAndXbox from "./views/main-page/PlayAndXbox";
 import PlayStation from "./views/main-page/PlayStation";
 import Xbox from "./views/main-page/Xbox";
+import SpecificGame from "./views/specific-game/SpecificGame";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path={routes.PLAYANDXBOX} element={<PlayAndXbox />} />
         <Route path={routes.PLAYSTATION} element={<PlayStation />} />
         <Route path={routes.XBOX} element={<Xbox />} />
+        <Route path={`${routes.SPECIFICGAME}/:idSpecificGame`} element={<SpecificGame />}/>
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     </BrowserRouter>

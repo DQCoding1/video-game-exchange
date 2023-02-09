@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { routes } from "../routes/routes";
 import "./MainPage.scss";
 import "./GameCards.scss";
 
@@ -34,7 +35,10 @@ const GameCards = ({ currentGames, consoleType }) => {
                 <div className="article__usedGame">Used</div>
               )}
               <div className="article__consoleType">{item?.consoleType}</div>
-              <Link to={""} className={setButtonColor()}>
+              <Link
+                to={`${routes.SPECIFICGAME}/${item.id}`}
+                className={setButtonColor()}
+              >
                 See more
               </Link>
             </div>
