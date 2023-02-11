@@ -13,17 +13,19 @@ const GameCards = ({ currentGames, consoleType }) => {
         return "article__linkPLay";
       case "Xbox":
         return "article__linkXbox";
+      default: 
+        return "consoleType doesn't exist"
     }
   };
 
   return (
     <>
-      {currentGames.length > 0 ? (
+      {currentGames?.length > 0 ? (
         currentGames.map((item, index) => (
           <article key={index} className="article">
             <img
-              src={require(`../assets/gamesImages/${item.nameOfGame} ${item.consoleType}.jpg`)}
-              alt={`${item.nameOfGame} image`}
+              src={item.image}
+              alt={`${item.nameOfGame}`}
               className="article__img"
               loading="lazy"
             />

@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 
-
 export const allInitialGames = [
   {
     id: uuidv4(),
@@ -8,7 +7,8 @@ export const allInitialGames = [
     nameOfGame: "fifa 17",
     consoleType: "xbox 360",
     isNew: false,
-    description: "the game works well although visually it is a bit worn"
+    description: "the game works well although visually it is a bit worn",
+    image: require("../assets/gamesImages/fifa 17 xbox 360.jpg")
   },
   {
     id: uuidv4(),
@@ -16,7 +16,8 @@ export const allInitialGames = [
     nameOfGame: "fifa 21",
     consoleType: "xbox series",
     isNew: false,
-    description: "it is working well"
+    description: "it is working well",
+    image: require("../assets/gamesImages/fifa 21 xbox series.jpg")
   },
   {
     id: uuidv4(),
@@ -24,7 +25,8 @@ export const allInitialGames = [
     nameOfGame: "god of war ragnarok",
     consoleType: "playStation 5",
     isNew: true,
-    description: "the game is in perfect condition"
+    description: "the game is in perfect condition",
+    image: require("../assets/gamesImages/god of war ragnarok playStation 5.jpg")
   },
   {
     id: uuidv4(),
@@ -32,7 +34,8 @@ export const allInitialGames = [
     nameOfGame: "need for speed",
     consoleType: "xbox one",
     isNew: true,
-    description: "if you're interested send me a message"
+    description: "if you're interested send me a message",
+    image: require("../assets/gamesImages/need for speed xbox one.jpg")
   },
   {
     id: uuidv4(),
@@ -40,7 +43,8 @@ export const allInitialGames = [
     nameOfGame: "ufc 3",
     consoleType: "playStation 3",
     isNew: false,
-    description: "it is working well"
+    description: "it is working well",
+    image: require("../assets/gamesImages/ufc 3 playStation 3.jpg")
   },
   {
     id: uuidv4(),
@@ -48,7 +52,8 @@ export const allInitialGames = [
     nameOfGame: "hitman",
     consoleType: "playStation 4",
     isNew: true,
-    description: "the game is in perfect condition"
+    description: "the game is in perfect condition",
+    image: require("../assets/gamesImages/hitman playStation 4.jpg")
   },
   {
     id: uuidv4(),
@@ -56,7 +61,8 @@ export const allInitialGames = [
     nameOfGame: "devil may cry 4",
     consoleType: "xbox 360",
     isNew: true,
-    description: "if you're interested send me a message"
+    description: "if you're interested send me a message",
+    image: require("../assets/gamesImages/devil may cry 4 xbox 360.jpg")
   },
   {
     id: uuidv4(),
@@ -64,7 +70,8 @@ export const allInitialGames = [
     nameOfGame: "silent hill",
     consoleType: "xbox one",
     isNew: true,
-    description: "the game is in perfect condition"
+    description: "the game is in perfect condition",
+    image: require("../assets/gamesImages/silent hill xbox one.jpg")
   },
   {
     id: uuidv4(),
@@ -72,7 +79,8 @@ export const allInitialGames = [
     nameOfGame: "assassins creed 3",
     consoleType: "xbox 360",
     isNew: false,
-    description: "the game works well although visually it is a bit worn"
+    description: "the game works well although visually it is a bit worn",
+    image: require("../assets/gamesImages/assassins creed 3 xbox 360.jpg")
   },
   {
     id: uuidv4(),
@@ -80,7 +88,8 @@ export const allInitialGames = [
     nameOfGame: "resident evil 6",
     consoleType: "xbox series",
     isNew: false,
-    description: "the game is used but it's working like a new one"
+    description: "the game is used but it's working like a new one",
+    image: require("../assets/gamesImages/resident evil 6 xbox series.jpg")
   },
   {
     id: uuidv4(),
@@ -88,7 +97,8 @@ export const allInitialGames = [
     nameOfGame: "resident evil 5",
     consoleType: "playStation 4",
     isNew: true,
-    description: "if you're interested send me a message"
+    description: "if you're interested send me a message",
+    image: require("../assets/gamesImages/resident evil 5 playStation 4.jpg")
   },
   {
     id: uuidv4(),
@@ -96,7 +106,8 @@ export const allInitialGames = [
     nameOfGame: "halo collection",
     consoleType: "xbox one",
     isNew: true,
-    description: "the game is in perfect condition"
+    description: "the game is in perfect condition",
+    image: require("../assets/gamesImages/halo collection xbox one.jpg")
   },
   {
     id: uuidv4(),
@@ -104,7 +115,8 @@ export const allInitialGames = [
     nameOfGame: "dragon ball xenoverse 2",
     consoleType: "playStation 4",
     isNew: true,
-    description: "if you're interested send me a message"
+    description: "if you're interested send me a message",
+    image: require("../assets/gamesImages/dragon ball xenoverse 2 playStation 4.jpg")
   },
   {
     id: uuidv4(),
@@ -112,7 +124,8 @@ export const allInitialGames = [
     nameOfGame: "far cry 6",
     consoleType: "playStation 4",
     isNew: false,
-    description: "it is working well"
+    description: "it is working well",
+    image: require("../assets/gamesImages/far cry 6 playStation 4.jpg")
   },
   {
     id: uuidv4(),
@@ -120,7 +133,8 @@ export const allInitialGames = [
     nameOfGame: "the evil within",
     consoleType: "xbox one",
     isNew: true,
-    description: "the game is in perfect condition"
+    description: "the game is in perfect condition",
+    image: require("../assets/gamesImages/the evil within xbox one.jpg")
   },
   {
     id: uuidv4(),
@@ -128,7 +142,8 @@ export const allInitialGames = [
     nameOfGame: "the evil within 2",
     consoleType: "playStation 4",
     isNew: false,
-    description: "the game is used but it's working like a new one"
+    description: "the game is used but it's working like a new one",
+    image: require("../assets/gamesImages/the evil within 2 playStation 4.jpg")
   },
   {
     id: uuidv4(),
@@ -136,7 +151,8 @@ export const allInitialGames = [
     nameOfGame: "elden ring",
     consoleType: "playStation 5",
     isNew: false,
-    description: "the game is used but it is working well"
+    description: "the game is used but it is working well",
+    image: require("../assets/gamesImages/elden ring playStation 5.jpg")
   },
   {
     id: uuidv4(),
@@ -144,7 +160,8 @@ export const allInitialGames = [
     nameOfGame: "fifa 19",
     consoleType: "xbox 360",
     isNew: false,
-    description: "the game works well although visually it is a bit worn"
+    description: "the game works well although visually it is a bit worn",
+    image: require("../assets/gamesImages/fifa 19 xbox 360.jpg")
   },
   {
     id: uuidv4(),
@@ -152,7 +169,8 @@ export const allInitialGames = [
     nameOfGame: "grand theft auto",
     consoleType: "playStation 5",
     isNew: true,
-    description: "if you're interested send me a message"
+    description: "if you're interested send me a message",
+    image: require("../assets/gamesImages/grand theft auto playStation 5.jpg")
   },
   {
     id: uuidv4(),
@@ -160,7 +178,8 @@ export const allInitialGames = [
     nameOfGame: "atlas fallen",
     consoleType: "xbox series",
     isNew: true,
-    description: "the game is in perfect condition"
+    description: "the game is in perfect condition",
+    image: require("../assets/gamesImages/atlas fallen xbox series.jpg")
   },
   {
     id: uuidv4(),
@@ -168,7 +187,8 @@ export const allInitialGames = [
     nameOfGame: "fifa 17",
     consoleType: "playStation 3",
     isNew: false,
-    description: "the game works well although visually it is a bit worn"
+    description: "the game works well although visually it is a bit worn",
+    image: require("../assets/gamesImages/fifa 17 playStation 3.jpg")
   },
   {
     id: uuidv4(),
@@ -176,7 +196,8 @@ export const allInitialGames = [
     nameOfGame: "halo infinite",
     consoleType: "xbox series",
     isNew: false,
-    description: "if you're interested send me a message"
+    description: "if you're interested send me a message",
+    image: require("../assets/gamesImages/halo infinite xbox series.jpg")
   },
   {
     id: uuidv4(),
@@ -184,7 +205,8 @@ export const allInitialGames = [
     nameOfGame: "god of war",
     consoleType: "playStation 3",
     isNew: false,
-    description: "it is working well"
+    description: "it is working well",
+    image: require("../assets/gamesImages/god of war playStation 3.jpg")
   },
   {
     id: uuidv4(),
@@ -192,7 +214,8 @@ export const allInitialGames = [
     nameOfGame: "skate 3",
     consoleType: "xbox 360",
     isNew: true,
-    description: "the game is in perfect condition"
+    description: "the game is in perfect condition",
+    image: require("../assets/gamesImages/skate 3 xbox 360.jpg")
   },
   {
     id: uuidv4(),
@@ -200,7 +223,8 @@ export const allInitialGames = [
     nameOfGame: "god of war",
     consoleType: "playStation 4",
     isNew: true,
-    description: "if you're interested send me a message"
+    description: "if you're interested send me a message",
+    image: require("../assets/gamesImages/god of war playStation 4.jpg")
   },
   {
     id: uuidv4(),
@@ -208,14 +232,8 @@ export const allInitialGames = [
     nameOfGame: "red dead redemption 2",
     consoleType: "playStation 4",
     isNew: false,
-    description: "the game is used but it's working like a new one"
+    description: "the game is used but it's working like a new one",
+    image: require("../assets/gamesImages/red dead redemption 2 playStation 4.jpg")
   },
 ];
 
-export const initialPlayGames = allInitialGames.filter((item) =>
-  item.consoleType.includes("playStation")
-);
-
-export const initialXboxGames = allInitialGames.filter((item) =>
-  item.consoleType.includes("xbox")
-);

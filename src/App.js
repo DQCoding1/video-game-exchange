@@ -5,6 +5,8 @@ import PlayAndXbox from "./views/main-page/PlayAndXbox";
 import PlayStation from "./views/main-page/PlayStation";
 import Xbox from "./views/main-page/Xbox";
 import SpecificGame from "./views/specific-game/SpecificGame";
+import PostGame from "./views/post-a-game/PostGame";
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           path={`${routes.SPECIFICGAME}/:idSpecificGame`}
           element={<SpecificGame />}
         />
+        <Route path={routes.POSTGAME} element={<PostGame />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     </BrowserRouter>

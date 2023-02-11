@@ -36,10 +36,9 @@ const SpecificGame = () => {
       <div className="specificGame__game">
         <img
           src={
-            infoSpecifiGame &&
-            require(`../../assets/gamesImages/${infoSpecifiGame?.nameOfGame} ${infoSpecifiGame?.consoleType}.jpg`)
+            infoSpecifiGame && infoSpecifiGame.image
           }
-          alt={`${idSpecificGame?.nameOfGame} image`}
+          alt={`${idSpecificGame?.nameOfGame}`}
           className="specificGame__img"
         />
         <div className="specificGame__texts">

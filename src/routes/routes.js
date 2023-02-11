@@ -2,5 +2,6 @@
   PLAYANDXBOX: "/playandxbox",
   PLAYSTATION: "/playstation",
   XBOX: "/xbox",
-  SPECIFICGAME: "/specificGame"
+  SPECIFICGAME: "/specificGame",
+  POSTGAME: "/postgame"
 }

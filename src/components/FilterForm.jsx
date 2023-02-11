@@ -401,7 +401,7 @@ const FilterForm = ({
           <input type="submit" value="Search" className="search__submit" />
         </li>
       </ul>
-      <Link to={""} className="linkToPost">
+      <Link to={routes.POSTGAME} className="linkToPost">
         Post a game
       </Link>
     </>
