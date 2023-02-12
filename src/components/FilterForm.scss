@@ -152,9 +152,9 @@
   }
   
   &__input{
+    @include borderInput();
     width: 100%;
     padding: .5rem;
-    opacity: .9;
   }
   
   &__labelContainer{

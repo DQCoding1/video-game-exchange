@@ -4,3 +4,42 @@
   background: $bgcolor;
   color: $text-color;  
 }
+
+@mixin borderInput(){
+  border: none;
+  outline: 2px solid grey;
+  background-color: $bg-color;
+  color: $font-color;
+  border-radius: 8px;
+  
+  &:focus{
+    outline: 3px solid $font-color;
+  }
+}
+
+@mixin showMessage(){
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 20%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 800ms ease-out;
+  
+  &--visible{
+    opacity: 1;
+    visibility: visible;
+    top: 0;
+    font-size: 3rem;
+    display: grid;
+    place-items: center;
+    background-color: $xbox-color;
+  
+    @media(max-width:830px){
+      font-size: 2rem;
+    }
+    @media(max-width:430px){
+      font-size: 1.5rem;
+    }
+  }
+}
