@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { routes } from "../routes/routes";
+import { PublicRoutes } from "../routes/routes";
 import "./MainPage.scss";
 import "./GameCards.scss";
 
@@ -13,8 +13,8 @@ const GameCards = ({ currentGames, consoleType }) => {
         return "article__linkPLay";
       case "Xbox":
         return "article__linkXbox";
-      default: 
-        return "consoleType doesn't exist"
+      default:
+        return "consoleType doesn't exist";
     }
   };
 
@@ -38,7 +38,7 @@ const GameCards = ({ currentGames, consoleType }) => {
               )}
               <div className="article__consoleType">{item?.consoleType}</div>
               <Link
-                to={`${routes.SPECIFICGAME}/${item.id}`}
+                to={`${PublicRoutes.SPECIFICGAME}/${item.id}`}
                 className={setButtonColor()}
               >
                 See more

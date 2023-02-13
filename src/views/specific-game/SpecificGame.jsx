@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { allInitialGames } from "../../consts/initialGames";
+import { PublicRoutes } from "../../routes/routes";
 import "./SpecificGame.scss";
 
 const SpecificGame = () => {
@@ -24,7 +25,7 @@ const SpecificGame = () => {
           messageSuccess.current.classList.remove(
             "specificGame__success--visible"
           ),
-          navigate("/playandxbox")
+          navigate(`${PublicRoutes.PLAYANDXBOX}`)
         );
       }, 3000);
     }
@@ -35,9 +36,7 @@ const SpecificGame = () => {
       <h1 className="specificGame__h1">{infoSpecifiGame?.nameOfGame}</h1>
       <div className="specificGame__game">
         <img
-          src={
-            infoSpecifiGame && infoSpecifiGame.image
-          }
+          src={infoSpecifiGame && infoSpecifiGame.image}
           alt={`${idSpecificGame?.nameOfGame}`}
           className="specificGame__img"
         />

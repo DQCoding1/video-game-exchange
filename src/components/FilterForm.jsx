@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { routes } from "../routes/routes";
+import { PrivateRoutes, PublicRoutes } from "../routes/routes";
 import { NavLink } from "react-router-dom";
 import "./FilterForm.scss";
 
@@ -117,7 +117,7 @@ const FilterForm = ({
       <ul className="consoles">
         <li className="consoles__consoleContainer">
           <NavLink
-            to={routes.PLAYANDXBOX}
+            to={PublicRoutes.PLAYANDXBOX}
             onClick={() => backToInitialGames(allGames)}
             className={({ isActive }) =>
               isActive
@@ -224,7 +224,7 @@ const FilterForm = ({
         </li>
         <li className="consoles__consoleContainer">
           <NavLink
-            to={routes.PLAYSTATION}
+            to={PublicRoutes.PLAYSTATION}
             onClick={() => backToInitialGames(playGames)}
             className={({ isActive }) =>
               isActive ? "consoles__playLink--on" : "consoles__playLink--off"
@@ -284,7 +284,7 @@ const FilterForm = ({
         </li>
         <li className="consoles__consoleContainer">
           <NavLink
-            to={routes.XBOX}
+            to={PublicRoutes.XBOX}
             onClick={() => backToInitialGames(xboxGames)}
             className={({ isActive }) =>
               isActive ? "consoles__xboxLink--on" : "consoles__xboxLink--off"
@@ -401,7 +401,7 @@ const FilterForm = ({
           <input type="submit" value="Search" className="search__submit" />
         </li>
       </ul>
-      <Link to={routes.POSTGAME} className="linkToPost">
+      <Link to={PrivateRoutes.POSTGAME} className="linkToPost">
         Post a game
       </Link>
     </>

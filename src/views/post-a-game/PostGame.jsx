@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { allInitialGames } from "../../consts/initialGames";
 import { v4 as uuidv4 } from "uuid";
 import "./PostGame.scss";
+import { PublicRoutes } from "../../routes/routes";
 
 const initialNewGame = {
   id: uuidv4(),
+  userName: localStorage.getItem("userStorage"),
   nameOfGame: "",
   consoleType: "",
   isNew: "",
@@ -73,7 +75,7 @@ const PostGame = () => {
       setTimeout(() => {
         return (
           messageSuccess.current.classList.remove("postGame__success--visible"),
-          navigate("/playandxbox")
+          navigate(`${PublicRoutes.PLAYANDXBOX}`)
         );
       }, 3000);
     }
@@ -83,7 +85,8 @@ const PostGame = () => {
     inputFileRef.current.click();
   };
   return (
-    <div className="postGame">
+    <section className="postGame">
+      <h1 className="postGame__h1">Post a new Game</h1>
       <form onSubmit={handleSubmit} className="postGame__form">
         <div
           className="postGame__imgContainer"
@@ -187,7 +190,7 @@ const PostGame = () => {
       <div className="postGame__success" ref={messageSuccess}>
         Game Posted successfully
       </div>
-    </div>
+    </section>
   );
 };
 

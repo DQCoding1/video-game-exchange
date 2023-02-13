@@ -1,7 +1,11 @@
- export const routes = {
+export const PublicRoutes = {
   PLAYANDXBOX: "/playandxbox",
   PLAYSTATION: "/playstation",
   XBOX: "/xbox",
   SPECIFICGAME: "/specificGame",
-  POSTGAME: "/postgame"
-}
+  SIGNUP: "/signup"
+};
+
+export const PrivateRoutes = {
+  POSTGAME: "/postgame",
+};

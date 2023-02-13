@@ -59,10 +59,11 @@
     justify-content: center;
     text-align: center;
     gap: 2rem;
-
+    
     @media(max-width: 680px){
       width: 100%;
       align-items: center;
+      gap: 1rem;
     }
   }
 
@@ -81,6 +82,7 @@
     
     @media(max-width: 830px){
       width: 80%;
+      font-size: 1.1rem;
     }
   }
   
@@ -93,6 +95,7 @@
     
     @media(max-width: 830px){
       width: 80%;
+      height: 180px;
     }
   }
   
