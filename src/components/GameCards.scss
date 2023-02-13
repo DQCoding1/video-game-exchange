@@ -33,30 +33,17 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    opacity: .8;
     @include btn(linear-gradient(to right, $playAndXbox-color), $font-color);
     text-decoration: none;
-
-    &:hover{
-      opacity: 1;
-    }
   }
 
   &__linkPLay{
-    opacity: .8;
     @include btn($play-color, $font-color);
     text-decoration: none;
-    &:hover{
-      opacity: 1;
-    }
   }
 
   &__linkXbox{
-    opacity: .8;
     @include btn($xbox-color, $font-color);
-    text-decoration: none;
-    &:hover{
-      opacity: 1;
-    }
+    text-decoration: none;  
   }
 }

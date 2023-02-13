@@ -15,19 +15,24 @@ const SpecificGame = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const value = textAreaRef.current.value.trim();
-    if (value === "") {
-      alert("the input can't be empty");
+    if (localStorage.getItem("userStorage")) {
+      const value = textAreaRef.current.value.trim();
+      if (value === "") {
+        alert("the input can't be empty");
+      } else {
+        messageSuccess.current.classList.add("specificGame__success--visible");
+        setTimeout(() => {
+          return (
+            messageSuccess.current.classList.remove(
+              "specificGame__success--visible"
+            ),
+            navigate(`${PublicRoutes.PLAYANDXBOX}`)
+          );
+        }, 3000);
+      }
     } else {
-      messageSuccess.current.classList.add("specificGame__success--visible");
-      setTimeout(() => {
-        return (
-          messageSuccess.current.classList.remove(
-            "specificGame__success--visible"
-          ),
-          navigate(`${PublicRoutes.PLAYANDXBOX}`)
-        );
-      }, 3000);
+      alert("You need an account")
+      navigate(`${PublicRoutes.SIGNUP}`)
     }
   };
 

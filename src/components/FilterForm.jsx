@@ -401,7 +401,13 @@ const FilterForm = ({
           <input type="submit" value="Search" className="search__submit" />
         </li>
       </ul>
-      <Link to={PrivateRoutes.POSTGAME} className="linkToPost">
+      <Link
+        to={PrivateRoutes.POSTGAME}
+        className="linkToPost"
+        onClick={() => {
+          localStorage.getItem("userStorage") || alert("You need an account");
+        }}
+      >
         Post a game
       </Link>
     </>

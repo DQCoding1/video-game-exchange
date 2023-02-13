@@ -153,8 +153,7 @@
   
   &__input{
     @include borderInput();
-    width: 100%;
-    padding: .5rem;
+    width: 100%; 
   }
   
   &__labelContainer{

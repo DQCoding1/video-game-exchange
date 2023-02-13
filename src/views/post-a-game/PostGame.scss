@@ -8,7 +8,16 @@
   background-color: $bg-color;
   color: $font-color;
   padding: 1.5rem;
-  gap: 1rem;
+  gap: 2rem;
+
+  &__backToMain{
+    color: $font-color;
+    opacity: .7;
+    
+    &:hover{
+      opacity: 1;
+    }
+  }
 
   &__form{
     width: 35%;
@@ -38,13 +47,16 @@
   }
 
   &__imgContainer{
-    border: 2px dashed grey;
+    border: 2px dotted grey;
     height: 350px;
     border-radius: 10px;
     overflow: hidden;
+    opacity: .8;
     
     &:hover{
+      opacity: 1;
       cursor: pointer;
+      border: 3px dashed grey;
     }
 
     @media (max-width:830px){
@@ -66,12 +78,12 @@
     }
   }
 
-  
   &__labelInputText,
   &__labelConsoleType,
   &__labelGameState,
   &__labelDescription,
-  &__labelSubmit{
+  &__labelSubmit,
+  &__labelFile{
 
     &:hover{
       cursor: pointer;
@@ -102,6 +114,10 @@
   }
 
   &__success{
-    @include showMessage();
+    @include showSuccessMessage();
+  }
+
+  @media(max-width:480px){
+    padding: .2rem;
   }
 }

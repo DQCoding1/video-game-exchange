@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { allInitialGames } from "../../consts/initialGames";
 import { v4 as uuidv4 } from "uuid";
 import "./PostGame.scss";
@@ -86,6 +86,9 @@ const PostGame = () => {
   };
   return (
     <section className="postGame">
+      <Link to={PublicRoutes.PLAYANDXBOX} className="postGame__backToMain">
+        BACK TO MAIN
+      </Link>
       <h1 className="postGame__h1">Post a new Game</h1>
       <form onSubmit={handleSubmit} className="postGame__form">
         <div
