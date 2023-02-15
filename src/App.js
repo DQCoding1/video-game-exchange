@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<EntryPage />} />
+        <Route path="/video-game-exchange" element={<EntryPage />} />
         <Route path={PublicRoutes.PLAYANDXBOX} element={<PlayAndXbox />} />
         <Route path={PublicRoutes.PLAYSTATION} element={<PlayStation />} />
         <Route path={PublicRoutes.XBOX} element={<Xbox />} />
