@@ -10,4 +10,4 @@ you can also filter the games depending on what you are looking for, you can pos
 
 [See project here](https://dqcoding1.github.io/video-game-exchange/)
 
-![Website entry page preview](../video-game-exchange/src/assets/screenshotEntryPage.jpg "Website entry page preview")
+[![screenshot-Entry-Page.jpg](https://i.postimg.cc/XqCFYdz4/screenshot-Entry-Page.jpg)](https://postimg.cc/V0z57rwV)
