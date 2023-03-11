@@ -7,7 +7,7 @@ const ValidateProtectedRoutes = ({ children }) => {
   if (userStorage) {
     return children;
   } else {
-    return <Navigate to={`${PublicRoutes.SIGNUP}`} />;
+    return <Navigate to={`${PublicRoutes.SIGNUP}`} replace={true}/>;
   }
 };
 
