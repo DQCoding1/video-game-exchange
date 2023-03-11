@@ -1,6 +1,6 @@
 # video-game-exchange
 
-This is a frontend website where you can exchange diferent videogames with other users, you can exchange games from consoles like:
+This is a website where you can exchange diferent videogames with other users, you can exchange games from consoles like:
 
 - PlayStation or
 - Xbox
@@ -10,4 +10,4 @@ you can also filter the games depending on what you are looking for, you can pos
 
 [See project here](https://dqcoding1.github.io/video-game-exchange/)
 
-[![screenshot-Entry-Page.jpg](https://i.postimg.cc/XqCFYdz4/screenshot-Entry-Page.jpg)](https://postimg.cc/V0z57rwV)
+![video game exchange preview](https://i.postimg.cc/76QnqXGF/screenshot-Entry-Page.jpg)
