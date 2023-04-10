@@ -10,7 +10,7 @@ const SpecificGame = () => {
   const navigate = useNavigate();
   const { idSpecificGame } = useParams();
   const infoSpecifiGame = allInitialGames.find(
-    (item) => item.id === idSpecificGame
+    (item) => item.id === Number(idSpecificGame)
   );
 
   const handleSubmit = (e) => {

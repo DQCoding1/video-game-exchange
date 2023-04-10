@@ -5,18 +5,17 @@ import { v4 as uuidv4 } from "uuid";
 import "./PostGame.scss";
 import { PublicRoutes } from "../../routes/routes";
 
-const initialNewGame = {
-  id: uuidv4(),
-  userName: localStorage.getItem("userStorage"),
-  nameOfGame: "",
-  consoleType: "",
-  isNew: "",
-  description: "",
-  image: "",
-};
 
 const PostGame = () => {
-  const [newGame, setNewGame] = useState(initialNewGame);
+  const [newGame, setNewGame] = useState({
+    id: allInitialGames.length + 1,
+    userName: localStorage.getItem("userStorage"),
+    nameOfGame: "",
+    consoleType: "",
+    isNew: "",
+    description: "",
+    image: "",
+  });
   const imgContainerRef = useRef();
   const inputFileRef = useRef();
   const messageSuccess = useRef();
