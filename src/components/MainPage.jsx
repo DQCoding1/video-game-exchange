@@ -43,6 +43,9 @@ const MainPage = ({ consoleType }) => {
         xboxGames(setDefaultGames);
         xboxGames(setCurrentGames);
         break;
+      default :
+        allGames(setDefaultGames);
+        allGames(setCurrentGames);
     }
   }, []);
 
