@@ -4,10 +4,10 @@
 
   switch($_SERVER["REQUEST_METHOD"]){
     case "POST":
-      $userInfo = json_decode(file_get_contents("php://input"));
+      $userInfo = json_decode(file_get_contents("php://input"), true);
       $passwordHash = password_hash($userInfo["password"], PASSWORD_DEFAULT);
       $conn = new Db();
-      $conn->createUser();
+      $conn->createUser($userInfo["user_name"], $userInfo["email"], $passwordHash);
       break;
   }
 ?>
