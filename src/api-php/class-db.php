@@ -1,5 +1,5 @@
 <?php
-  class db {
+  class Db {
     private $server = "localhost";
     private $dbname = "id20636126_db_videogame_exchange";
     private $user =  "id20636126_root";
