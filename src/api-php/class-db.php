@@ -21,7 +21,8 @@
       $query = "INSERT INTO users (user_name, email, password) 
                 VALUES ('$userName' ,'$email', '$password')";
       $this->conn->exec($query);
-      echo "user created";
+      $result = array("user" => "user {$userName} created");
+      echo json_encode($result);
     }
   }
 ?>
