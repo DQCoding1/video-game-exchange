@@ -8,6 +8,7 @@ import SpecificGame from "./views/specific-game/SpecificGame";
 import PostGame from "./views/post-a-game/PostGame";
 import ValidateProtectedRoutes from "./components/ValidateProtectedRoutes";
 import SignUp from "./views/sign-up/SignUp";
+import Login from "./views/login/Login";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           </ValidateProtectedRoutes>
         } />
         <Route path={PublicRoutes.SIGNUP} element={<SignUp />} />
+        <Route path={PublicRoutes.LOGIN} element={<Login />} />
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>
     </BrowserRouter>
