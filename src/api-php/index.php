@@ -14,4 +14,5 @@
       $result = $conn->createUser($userInfo["user_name"], $userInfo["email"], $passwordHash);
       break;
   }
+  
 ?>

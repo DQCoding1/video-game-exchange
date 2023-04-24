@@ -43,18 +43,20 @@ const SignUp = () => {
       );
       if (repetedUser === undefined) {
         // localStorage.setItem("userStorage", infoSignUp.userName);
-        fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php", {
+        const url = "https://videogame-exchange.000webhostapp.com/api-php/index.php";
+        const optionsFetch = {
           method: "POST",
           body: JSON.stringify({
             "user_name" : infoSignUp.userName,
             "email" : infoSignUp.email,
-            "password" : infoSignUp.password,
+            "password" : infoSignUp.password
           }),
           headers: {
-            "Content-Type" : "application/json"
-          },
-          mode: "no-cors"
-        })
+            "Content-Type" : "application/x-www-form-urlencoded"
+          }
+        }
+
+        fetch(url, optionsFetch)
           .then(res => res.json())
           .then(data => console.log(data))
           .catch(err => console.log(err))
