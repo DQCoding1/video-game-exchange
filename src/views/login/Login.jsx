@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { PublicRoutes } from "../../routes/routes";
 import "./Login.scss";
 
 const initialInfoLogin = {
@@ -65,13 +67,16 @@ const Login = () => {
           value={infoLogin.password}
           onChange={handleChange}
           className="login__passwordInput"
-          />
+        />
         <input
           type="submit"
           name="Login"
           value="Login"
           className="login__submit"
         />
+        <Link to={PublicRoutes.SIGNUP} className="login__createAccount">
+          Create an account
+        </Link>
       </form>
     </section>
   );

@@ -14,7 +14,7 @@
     width: 30%;
     border: 2px solid $font-color;
     border-radius: 5px;
-    padding: 1rem;
+    padding: .8rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,5 +52,11 @@
     @media (max-width:1000px){
       width: 40%;
     }
+  }
+
+  &__createAccount{
+    color: $links;
+    align-self: flex-end;
+    font-size: .9rem;
   }
 }
