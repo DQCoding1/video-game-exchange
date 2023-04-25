@@ -14,6 +14,7 @@ const MainPage = ({ consoleType }) => {
   const [inputText, setInputText] = useState("");
   const userContextInfo = useContext(UserContext)
   console.log(userContextInfo);
+
   
   const consolesRef = {
     refPlay3: useRef(),
