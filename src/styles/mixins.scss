@@ -13,12 +13,12 @@
 
 @mixin borderInput(){
   border: none;
-  outline: 2px solid grey;
-  background-color: $bg-color;
-  color: $font-color;
-  border-radius: 8px;
+  outline: 1px solid grey;
+  background-color: $font-color;
+  color: $bg-color;
+  border-radius: 5px;
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 600;
   padding: .5rem;
   font-size: 1rem;
   

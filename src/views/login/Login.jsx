@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.scss";
 
 const initialInfoLogin = {
   action: "login",
@@ -52,6 +53,7 @@ const Login = () => {
           value={infoLogin.user_name}
           onChange={handleChange}
           className="login__usernameInput"
+          spellCheck="false"
         />
         <label htmlFor="password" className="login__passwordLabel">
           Password
@@ -63,7 +65,7 @@ const Login = () => {
           value={infoLogin.password}
           onChange={handleChange}
           className="login__passwordInput"
-        />
+          />
         <input
           type="submit"
           name="Login"
