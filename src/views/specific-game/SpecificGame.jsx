@@ -67,6 +67,7 @@ const SpecificGame = () => {
           placeholder="Write a message"
           ref={textAreaRef}
           className="specificGame__textArea"
+          spellCheck="false"
         ></textarea>
         <input
           type="submit"

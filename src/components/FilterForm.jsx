@@ -395,6 +395,7 @@ const FilterForm = ({
             id="inputFindGame"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
+            spellCheck="false"
           />
         </li>
         <li className="search__submitContainer">
