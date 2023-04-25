@@ -21,10 +21,11 @@
 
   &__mainContainer{
     display: flex;
-    padding: 3rem;
+    padding: 1.5rem;
     border: 2px solid grey;
     border-radius: 5px;
     gap: 1.5rem;
+    box-shadow: 0px 0px 10px rgb(102, 102, 102);
     
     @media(max-width:850px){
       gap: 1rem;
@@ -98,6 +99,11 @@
     @media(max-width:850px){
       padding: .5rem 1rem;
     }
+  }
+
+  &__login{
+    color: $links;
+    display: inline-block;
   }
 
   &__success{

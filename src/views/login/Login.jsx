@@ -43,6 +43,7 @@ const Login = () => {
 
   return (
     <section className="login">
+      <Link to={PublicRoutes.PLAYANDXBOX} className="login__backToMain">BACK TO MAIN</Link>
       <form onSubmit={handleSubmit} className="login__form">
         <h1 className="login__title">Login</h1>
         <label htmlFor="userName" className="login__usernameLabel">

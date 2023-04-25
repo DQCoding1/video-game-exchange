@@ -7,8 +7,19 @@
   background-color: $bg-color;
   color: $font-color;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+
+  &__backToMain{
+    color: $font-color;
+    opacity: .7;
+    
+    &:hover{
+      opacity: 1;
+    }
+  }
 
   &__form{
     width: 30%;

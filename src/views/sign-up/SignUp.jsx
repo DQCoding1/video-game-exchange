@@ -104,6 +104,7 @@ const SignUp = () => {
             className="signUp__userName"
             value={infoSignUp.userName}
             onChange={handleChange}
+            spellchech="false"
           />
           <label htmlFor="signUpEmail" className="signUp__labelEmail">
             Email
@@ -128,6 +129,9 @@ const SignUp = () => {
             onChange={handleChange}
           />
           <input type="submit" value="send" className="signUp__submit" />
+          <div className="signUp__loginContainer">
+            <Link to={PublicRoutes.LOGIN} className="signUp__login">Login</Link>
+          </div>
         </form>
       </div>
       <div className="signUp__success" ref={signUpSuccessRef}>
