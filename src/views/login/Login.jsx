@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 const initialInfoLogin = {
   action: "login",
@@ -16,9 +16,9 @@ const Login = () => {
     const optionsFetch = {
       method: "POST",
       body: JSON.stringify({
-        "action": infoLogin.action,
-        "user_name": infoLogin.user_name,
-        "password": infoLogin.password,
+        action: infoLogin.action,
+        user_name: infoLogin.user_name,
+        password: infoLogin.password,
       }),
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -39,26 +39,37 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <label htmlFor="userName">Name</label>
+    <section className="login">
+      <form onSubmit={handleSubmit} className="login__form">
+        <h1 className="login__title">Login</h1>
+        <label htmlFor="userName" className="login__usernameLabel">
+          User name
+        </label>
         <input
           type="text"
           id="userName"
           name="user_name"
           value={infoLogin.user_name}
           onChange={handleChange}
+          className="login__usernameInput"
         />
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" className="login__passwordLabel">
+          Password
+        </label>
         <input
           type="password"
           id="password"
           name="password"
           value={infoLogin.password}
           onChange={handleChange}
+          className="login__passwordInput"
         />
-        <input type="submit" name="Login" value="Login" />
+        <input
+          type="submit"
+          name="Login"
+          value="Login"
+          className="login__submit"
+        />
       </form>
     </section>
   );
