@@ -60,13 +60,15 @@ const SignUp = () => {
 
         fetch(url, optionsFetch)
           .then(res => res.json())
-          .then(data => console.log(data))
+          .then(data => {
+            // console.log(data)
+          })
           .catch(err => console.log(err))
 
         signUpSuccessRef.current.classList.add("signUp__success--visible");
         setTimeout(() => {
           signUpSuccessRef.current.classList.remove("signUp__success--visible");
-          navigate(PrivateRoutes.POSTGAME);
+          navigate(PublicRoutes.PLAYANDXBOX);
         }, 3000);
       } else {
         alert("User already exists");

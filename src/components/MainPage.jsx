@@ -1,17 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import useInitialGames from "../utils/hooks/useInitialGames";
 import GameCards from "./GameCards";
 import FilterForm from "./FilterForm";
 import burgerSvg from "../assets/svg/burger.svg";
 import closeSvg from "../assets/svg/close.svg";
 import "./MainPage.scss";
+import { UserContext } from "../contexts/User";
 
 const MainPage = ({ consoleType }) => {
   const { defaultGames, setDefaultGames, allGames, playGames, xboxGames } =
     useInitialGames();
   const [currentGames, setCurrentGames] = useState([]);
   const [inputText, setInputText] = useState("");
-
+  const userContextInfo = useContext(UserContext)
+  console.log(userContextInfo);
+  
   const consolesRef = {
     refPlay3: useRef(),
     refPlay4: useRef(),

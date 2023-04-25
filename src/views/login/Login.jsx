@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
 import "./Login.scss";
 
@@ -12,6 +12,13 @@ const initialInfoLogin = {
 const Login = () => {
   const [infoLogin, setInfoLogin] = useState(initialInfoLogin);
   const [credentials, setCredentials] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(credentials === true){
+      setTimeout(() => navigate(PublicRoutes.PLAYANDXBOX),2000)
+    }
+  }, [credentials])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +39,7 @@ const Login = () => {
     fetch(url, optionsFetch)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setCredentials(data.correctCredentials);
       })
       .catch((err) => console.log(err));
