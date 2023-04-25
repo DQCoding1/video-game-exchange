@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 
 const initialInfoLogin = {
+  action: "login",
   user_name: "",
   password: "",
 };
@@ -15,8 +16,9 @@ const Login = () => {
     const optionsFetch = {
       method: "POST",
       body: JSON.stringify({
-        user_name: infoLogin.user_name,
-        password: infoLogin.password,
+        "action": infoLogin.action,
+        "user_name": infoLogin.user_name,
+        "password": infoLogin.password,
       }),
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",

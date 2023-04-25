@@ -11,8 +11,11 @@
       $userInfo = json_decode(file_get_contents("php://input"), true);
       $passwordHash = password_hash($userInfo["password"], PASSWORD_DEFAULT);
       $conn = new Db();
-      $result = $conn->createUser($userInfo["user_name"], $userInfo["email"], $passwordHash);
+      if ($userInfo["action"] === "signup"){
+        $conn->createUser($userInfo["user_name"], $userInfo["email"], $passwordHash);
+      } else {
+        $conn->validateUser($userInfo["user_name"], $userInfo["password"]);
+      }
       break;
   }
-  
 ?>

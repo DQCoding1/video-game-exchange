@@ -6,6 +6,7 @@ import { allInitialGames } from "../../consts/initialGames";
 import "./SignUp.scss";
 
 const initialSignUp = {
+  action: "signup",
   userName: "",
   email: "",
   password: "",
@@ -47,6 +48,7 @@ const SignUp = () => {
         const optionsFetch = {
           method: "POST",
           body: JSON.stringify({
+            "action": infoSignUp.action,
             "user_name" : infoSignUp.userName,
             "email" : infoSignUp.email,
             "password" : infoSignUp.password
