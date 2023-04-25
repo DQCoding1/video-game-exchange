@@ -11,6 +11,7 @@ const initialInfoLogin = {
 
 const Login = () => {
   const [infoLogin, setInfoLogin] = useState(initialInfoLogin);
+  const [credentials, setCredentials] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,7 +31,10 @@ const Login = () => {
 
     fetch(url, optionsFetch)
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        setCredentials(data.correctCredentials);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -43,8 +47,19 @@ const Login = () => {
 
   return (
     <section className="login">
-      <Link to={PublicRoutes.PLAYANDXBOX} className="login__backToMain">BACK TO MAIN</Link>
+      <Link to={PublicRoutes.PLAYANDXBOX} className="login__backToMain">
+        BACK TO MAIN
+      </Link>
       <form onSubmit={handleSubmit} className="login__form">
+        {credentials === false && (
+          <div className="login__incorrectPassword">Incorrect Password</div>
+        )}
+        {credentials === true && (
+          <div className="login__correctCredentials">Correct Credentials</div>
+        )}
+        {credentials === "user does not exist" && (
+          <div className="login__userDoesNotExist">{credentials}</div>
+        )}
         <h1 className="login__title">Login</h1>
         <label htmlFor="userName" className="login__usernameLabel">
           User name

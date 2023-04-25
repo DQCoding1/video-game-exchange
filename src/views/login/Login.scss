@@ -31,6 +31,7 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    border: 2px solid grey;
     box-shadow: 0px 0px 10px rgb(102, 102, 102);
 
     @media (max-width:700px){
@@ -42,6 +43,18 @@
     }
   }
 
+  &__incorrectPassword{
+    color: #e71111;
+  }
+  
+  &__correctCredentials{
+    color: #25dd1f;
+  }
+
+  &__userDoesNotExist{
+    color: #f2ee11;
+  }
+  
   &__title{
     font-size: 2rem;
   }
