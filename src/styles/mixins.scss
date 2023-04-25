@@ -14,16 +14,17 @@
 @mixin borderInput(){
   border: none;
   outline: 1px solid grey;
-  background-color: $font-color;
-  color: $bg-color;
+  background-color: $bg-color;
+  color: $font-color;
   border-radius: 5px;
   font-family: inherit;
   font-weight: 600;
   padding: .5rem;
   font-size: 1rem;
+  box-shadow: 0px 0px 5px $font-color;
   
   &:focus{
-    outline: 3px solid $font-color;
+    outline: 2px solid $font-color;
   }
 }
 
