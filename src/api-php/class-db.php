@@ -24,5 +24,20 @@
       $result = array("user" => "user {$userName} created");
       echo json_encode($result);
     }
+    
+    
+    public function validateUser($userName, $password){
+          $query = "SELECT password FROM users WHERE user_name = '$userName'";
+          $statement = $this->conn->prepare($query);
+          $statement->execute();
+          $result = $statement->fetchAll();
+          if (count($result) > 0){
+            $passwordHash = $result[0]["password"];
+            $isSamePassword = password_verify($password, $passwordHash);
+            echo json_encode(array("correctCredentials" => $isSamePassword));
+          } else {
+            echo json_encode(array("correctCredentials" => "user does not exist"));
+          }
+    }
   }
 ?>

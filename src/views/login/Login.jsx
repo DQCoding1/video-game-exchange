@@ -25,10 +25,10 @@ const Login = () => {
       },
     };
 
-    // fetch(url, optionsFetch)
-      // .then((res) => res.json())
-      // .then((data) => console.log(data))
-      // .catch((err) => console.log(err));
+    fetch(url, optionsFetch)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   };
 
   const handleChange = (e) => {
