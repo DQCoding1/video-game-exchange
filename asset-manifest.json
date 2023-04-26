@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/video-game-exchange/static/css/main.3d60b2f0.css",
+    "main.css": "/video-game-exchange/static/css/main.5127ac6a.css",
     "main.js": "/video-game-exchange/static/js/main.cb402d7a.js",
     "static/media/resident evil 5 playStation 4.jpg": "/video-game-exchange/static/media/resident evil 5 playStation 4.9d77bfc713649954af5b.jpg",
     "static/media/atlas fallen xbox series.jpg": "/video-game-exchange/static/media/atlas fallen xbox series.bb81c5df8a22dc879194.jpg",
@@ -32,11 +32,11 @@
     "index.html": "/video-game-exchange/index.html",
     "static/media/close.svg": "/video-game-exchange/static/media/close.08233535a9321b39bf5f4a13e34fede0.svg",
     "static/media/burger.svg": "/video-game-exchange/static/media/burger.113d59e2703636dfe157ec8ec962d598.svg",
-    "main.3d60b2f0.css.map": "/video-game-exchange/static/css/main.3d60b2f0.css.map",
+    "main.5127ac6a.css.map": "/video-game-exchange/static/css/main.5127ac6a.css.map",
     "main.cb402d7a.js.map": "/video-game-exchange/static/js/main.cb402d7a.js.map"
   },
   "entrypoints": [
-    "static/css/main.3d60b2f0.css",
+    "static/css/main.5127ac6a.css",
     "static/js/main.cb402d7a.js"
   ]
 }
