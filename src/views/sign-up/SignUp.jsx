@@ -1,9 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import signUpImage from "../../assets/signUp.jpg";
 import { PrivateRoutes, PublicRoutes } from "../../routes/routes";
 import { allInitialGames } from "../../consts/initialGames";
 import "./SignUp.scss";
+import { UserContext } from "../../contexts/User";
 
 const initialSignUp = {
   action: "signup",
@@ -19,6 +20,7 @@ const SignUp = () => {
   const [infoSignUp, setInfoSignUp] = useState(initialSignUp);
   const signUpSuccessRef = useRef();
   const navigate = useNavigate();
+  const userContextInfo = useContext(UserContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,14 +64,19 @@ const SignUp = () => {
           .then(res => res.json())
           .then(data => {
             // console.log(data)
+            userContextInfo.setUserInfo({
+              userName: infoSignUp.userName
+            })
+    
+            signUpSuccessRef.current.classList.add("signUp__success--visible");
+            setTimeout(() => {
+              signUpSuccessRef.current.classList.remove("signUp__success--visible");
+              navigate(PublicRoutes.PLAYANDXBOX);
+            }, 3000);
           })
           .catch(err => console.log(err))
 
-        signUpSuccessRef.current.classList.add("signUp__success--visible");
-        setTimeout(() => {
-          signUpSuccessRef.current.classList.remove("signUp__success--visible");
-          navigate(PublicRoutes.PLAYANDXBOX);
-        }, 3000);
+        
       } else {
         alert("User already exists");
       }

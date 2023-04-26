@@ -13,7 +13,7 @@ const MainPage = ({ consoleType }) => {
   const [currentGames, setCurrentGames] = useState([]);
   const [inputText, setInputText] = useState("");
   const userContextInfo = useContext(UserContext)
-  console.log(userContextInfo);
+  // console.log(userContextInfo);
 
   
   const consolesRef = {
@@ -93,6 +93,9 @@ const MainPage = ({ consoleType }) => {
           onClick={showFormResponsive}
         ></img>
       </header>
+      <div className="section__welcome">
+        {userContextInfo.userInfo.userName && `🖐 Welcome ${userContextInfo.userInfo.userName} !`}
+      </div>
       <main className="section__main">
         <div className="section__cards">
           <GameCards currentGames={currentGames} consoleType={consoleType} />

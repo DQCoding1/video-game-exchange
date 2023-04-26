@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
 import "./Login.scss";
+import { UserContext } from "../../contexts/User";
 
 const initialInfoLogin = {
   action: "login",
@@ -12,11 +13,15 @@ const initialInfoLogin = {
 const Login = () => {
   const [infoLogin, setInfoLogin] = useState(initialInfoLogin);
   const [credentials, setCredentials] = useState("");
+  const userContextInfo = useContext(UserContext)
   const navigate = useNavigate();
 
   useEffect(() => {
     if(credentials === true){
-      setTimeout(() => navigate(PublicRoutes.PLAYANDXBOX),2000)
+      setTimeout(() => navigate(PublicRoutes.PLAYANDXBOX),1500)
+      userContextInfo.setUserInfo({
+        userName: infoLogin.user_name
+      })
     }
   }, [credentials])
 
