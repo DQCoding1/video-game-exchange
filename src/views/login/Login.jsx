@@ -73,29 +73,35 @@ const Login = () => {
           <div className="login__userDoesNotExist">{credentials}</div>
         )}
         <h1 className="login__title">Login</h1>
-        <label htmlFor="userName" className="login__usernameLabel">
-          User name
-        </label>
-        <input
-          type="text"
-          id="userName"
-          name="user_name"
-          value={infoLogin.user_name}
-          onChange={handleChange}
-          className="login__usernameInput"
-          spellCheck="false"
-        />
-        <label htmlFor="password" className="login__passwordLabel">
-          Password
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={infoLogin.password}
-          onChange={handleChange}
-          className="login__passwordInput"
-        />
+        <div className="login__inputContainer">
+          <label htmlFor="userName" className="login__usernameLabel">
+            User name
+          </label>
+          <input
+            type="text"
+            id="userName"
+            name="user_name"
+            value={infoLogin.user_name}
+            onChange={handleChange}
+            placeholder="User name"
+            className="login__usernameInput"
+            spellCheck="false"
+          />
+        </div>
+        <div className="login__inputContainer">
+          <label htmlFor="password" className="login__passwordLabel">
+            Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={infoLogin.password}
+            placeholder="password"
+            onChange={handleChange}
+            className="login__passwordInput"
+            />
+        </div>
         <input
           type="submit"
           name="Login"
