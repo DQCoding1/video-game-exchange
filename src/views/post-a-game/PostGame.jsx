@@ -4,6 +4,7 @@ import { allInitialGames } from "../../consts/initialGames";
 import { v4 as uuidv4 } from "uuid";
 import "./PostGame.scss";
 import { PublicRoutes } from "../../routes/routes";
+import axios from "axios";
 
 
 const PostGame = () => {
@@ -58,26 +59,31 @@ const PostGame = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      newGame.nameOfGame.trim() === "" ||
-      newGame.consoleType === "" ||
-      newGame.description.trim() === "" ||
-      newGame.isNew === "" ||
-      newGame.image.trim() === ""
-    ) {
-      alert("inputs can't be empty");
-    } else {
-      messageSuccess.current.classList.add("postGame__success--visible");
-      allInitialGames.unshift(newGame);
-      localStorage.setItem("image", newGame.image);
-      messageSuccess.current.classList.add("specificGame__success--visible");
-      setTimeout(() => {
-        return (
-          messageSuccess.current.classList.remove("postGame__success--visible"),
-          navigate(`${PublicRoutes.PLAYANDXBOX}`)
-        );
-      }, 3000);
-    }
+    // if (
+    //   newGame.nameOfGame.trim() === "" ||
+    //   newGame.consoleType === "" ||
+    //   newGame.description.trim() === "" ||
+    //   newGame.isNew === "" ||
+    //   newGame.image.trim() === ""
+    // ) {
+    //   alert("inputs can't be empty");
+    // } else {
+    //   messageSuccess.current.classList.add("postGame__success--visible");
+    //   allInitialGames.unshift(newGame);
+    //   localStorage.setItem("image", newGame.image);
+    //   messageSuccess.current.classList.add("specificGame__success--visible");
+    //   setTimeout(() => {
+    //     return (
+    //       messageSuccess.current.classList.remove("postGame__success--visible"),
+    //       navigate(`${PublicRoutes.PLAYANDXBOX}`)
+    //     );
+    //   }, 3000);
+    // }
+
+    const fd = new FormData();
+    fd.append("image", inputFileRef.current.files["0"])
+    axios.post("https://videogame-exchange.000webhostapp.com/api-php/postgame.php", fd)
+    .then(data => console.log(data.data))
   };
 
   const handleClickImgContainer = () => {
@@ -103,7 +109,7 @@ const PostGame = () => {
           id="file"
           accept="images/*"
           onChange={uploadImage}
-          required
+          // required
           ref={inputFileRef}
           className="postGame__file"
         />

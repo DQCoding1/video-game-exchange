@@ -39,5 +39,11 @@
             echo json_encode(array("correctCredentials" => "user does not exist"));
           }
     }
+    
+    public function postgame($image){
+        $query = "INSERT INTO user_posts (image) VALUES ('$image')";
+        $this->conn->exec($query);
+        echo json_encode(array("result" => "posted game"));
+    }
   }
 ?>
