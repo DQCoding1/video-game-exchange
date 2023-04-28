@@ -16,6 +16,7 @@ const MainPage = ({ consoleType }) => {
   const [inputText, setInputText] = useState("");
   const userContextInfo = useContext(UserContext);
   const navigate = useNavigate();
+  const [posts, setPosts] = useState([])
 
   const consolesRef = {
     refPlay3: useRef(),
@@ -33,6 +34,14 @@ const MainPage = ({ consoleType }) => {
   };
 
   const formRef = useRef();
+
+  useEffect(() => {
+    fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php")
+    .then(res => res.json())
+    .then(data => setPosts(data))
+  },[])
+
+
 
   useEffect(() => {
     switch (consoleType) {
@@ -113,6 +122,9 @@ const MainPage = ({ consoleType }) => {
       </div>
       <main className="section__main">
         <div className="section__cards">
+          {posts.map((item, index) => (
+            <img src={"data:image/jpg;base64,"+item.image} key={index} width="100px" />
+          ))}
           <GameCards currentGames={currentGames} consoleType={consoleType} />
         </div>
         <form onSubmit={handleSubmit} className="section__form" ref={formRef}>
