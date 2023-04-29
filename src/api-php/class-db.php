@@ -45,5 +45,19 @@
         $this->conn->exec($query);
         echo json_encode(array("result" => "posted game"));
     }
+    
+    
+    public function getAllPosts(){
+        $result = array();
+        $query = "SELECT * FROM user_posts";
+        $statement = $this->conn->prepare($query);
+        $statement->execute();
+        while ($data = $statement->fetch()){
+            $result[] = array(
+                "image" => base64_encode($data["image"])      
+              );
+        }
+        echo json_encode($result);
+    }
   }
 ?>

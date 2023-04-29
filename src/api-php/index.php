@@ -7,15 +7,22 @@
   include("./class-db.php");
 
   switch($_SERVER["REQUEST_METHOD"]){
+    case "GET":
+        $conn = new Db();
+        $conn->getAllPosts();
+      break;
+      
+      
     case "POST":
       $userInfo = json_decode(file_get_contents("php://input"), true);
-      $passwordHash = password_hash($userInfo["password"], PASSWORD_DEFAULT);
       $conn = new Db();
       if ($userInfo["action"] === "signup"){
+        $passwordHash = password_hash($userInfo["password"], PASSWORD_DEFAULT);
         $conn->createUser($userInfo["user_name"], $userInfo["email"], $passwordHash);
-      } else {
+      } else if ($userInfo["action"] === "login"){
+        $passwordHash = password_hash($userInfo["password"], PASSWORD_DEFAULT);
         $conn->validateUser($userInfo["user_name"], $userInfo["password"]);
-      }
+      } 
       break;
   }
 ?>
