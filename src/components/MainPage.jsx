@@ -79,8 +79,11 @@ const MainPage = ({ consoleType }) => {
       <main className="section__main">
       {!postsContextInfo.postsStateContext.length > 0
       ?
-        <div className="section__loadingContainer">
-          <div className="section__loading"></div>
+        <div className="section__loadingMainContainer">
+          <div className="section__loadingContainer">
+            <div className="section__loadingCircle"></div>
+            <p className="section__loadingText">loading ...</p>
+          </div>
         </div>
       :
         <div className="section__cards">

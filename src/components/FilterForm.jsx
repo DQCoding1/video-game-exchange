@@ -116,20 +116,20 @@ const FilterForm = ({
 
   const backToInitialGames = (typeOfGames) => {
     switch (typeOfGames) {
-      case "PlayGames":
-        setCurrentGames(allPosts);
-        break;
-      case "xboxGames":
+      case "playGames":
         const initialPlayGames = allPosts.filter((item) =>
           item.console_type.includes("playStation")
         );
         setCurrentGames(initialPlayGames)
         break;
-      case "allGames":
-        const initialXboxGames = allPosts.filter((item) =>
-          item.console_type.includes("xbox")
-        );
-        setCurrentGames(initialXboxGames)
+      case "xboxGames":
+          const initialXboxGames = allPosts.filter((item) =>
+            item.console_type.includes("xbox")
+          );
+          setCurrentGames(initialXboxGames)  
+          break;
+        case "allGames":
+          setCurrentGames(allPosts);
         break;
       }
 
