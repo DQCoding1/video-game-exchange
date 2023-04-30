@@ -21,24 +21,24 @@ const GameCards = ({ currentGames, consoleType }) => {
   return (
     <>
       {currentGames?.length > 0 ? (
-        currentGames.map((item, index) => (
-          <article key={index} className="article">
-            <img
-              src={item.image}
-              alt={`${item.nameOfGame}`}
+        currentGames.map((item) => (
+          <article key={item.post_id} className="article">
+            <img 
+              src={"data:image/jpg;base64,"+item.image} 
+              key={item.post_id} alt={`${item.nameOfGame}`}
               className="article__img"
               loading="lazy"
             />
             <div className="article__texts">
-              <h2 className="article__h2">{item?.nameOfGame}</h2>
-              {item.isNew ? (
+              <h2 className="article__h2">{item?.name_of_game}</h2>
+              {item.is_new === "true" ? (
                 <div className="article__newGame">New</div>
               ) : (
                 <div className="article__usedGame">Used</div>
               )}
-              <div className="article__consoleType">{item?.consoleType}</div>
+              <div className="article__consoleType">{item?.console_type}</div>
               <Link
-                to={`${PublicRoutes.SPECIFICGAME}/${item.id}`}
+                to={`${PublicRoutes.SPECIFICGAME}/${item.post_id}`}
                 className={setButtonColor()}
               >
                 See more

@@ -8,9 +8,14 @@
 
   switch($_SERVER["REQUEST_METHOD"]){
     case "POST":
+        $user_id = $_POST["user_id"];
+        $name_of_game = $_POST["name_of_game"];
+        $console_type = $_POST["console_type"];
+        $is_new = $_POST["is_new"];
+        $description = $_POST["description"];
         $image = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
         $conn = new Db();
-        $conn->postgame($image);
+        $conn->postgame($user_id, $image, $name_of_game, $console_type, $is_new, $description);
       break;
   }
 

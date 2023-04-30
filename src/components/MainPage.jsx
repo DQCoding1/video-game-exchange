@@ -10,58 +10,12 @@ import { UserContext } from "../contexts/User";
 import { PublicRoutes } from "../routes/routes";
 
 const MainPage = ({ consoleType }) => {
-  const { defaultGames, setDefaultGames, allGames, playGames, xboxGames } =
-    useInitialGames();
-  const [currentGames, setCurrentGames] = useState([]);
+  const { allPosts, defaultGames, currentGames, setCurrentGames} =
+    useInitialGames(consoleType);
   const [inputText, setInputText] = useState("");
   const userContextInfo = useContext(UserContext);
   const navigate = useNavigate();
-  const [posts, setPosts] = useState([])
-
-  const consolesRef = {
-    refPlay3: useRef(),
-    refPlay4: useRef(),
-    refPlay5: useRef(),
-    refXbox360: useRef(),
-    refXboxSeries: useRef(),
-    refXboxOne: useRef(),
-  };
-
-  const newOrUsedRef = {
-    refNew: useRef(),
-    refUsed: useRef(),
-    refNewAndUsed: useRef(),
-  };
-
   const formRef = useRef();
-
-  useEffect(() => {
-    fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php")
-    .then(res => res.json())
-    .then(data => setPosts(data))
-  },[])
-
-
-
-  useEffect(() => {
-    switch (consoleType) {
-      case "PlayStation And Xbox":
-        allGames(setDefaultGames);
-        allGames(setCurrentGames);
-        break;
-      case "PlayStation":
-        playGames(setDefaultGames);
-        playGames(setCurrentGames);
-        break;
-      case "Xbox":
-        xboxGames(setDefaultGames);
-        xboxGames(setCurrentGames);
-        break;
-      default:
-        allGames(setDefaultGames);
-        allGames(setCurrentGames);
-    }
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -122,9 +76,6 @@ const MainPage = ({ consoleType }) => {
       </div>
       <main className="section__main">
         <div className="section__cards">
-          {posts.map((item, index) => (
-            <img src={"data:image/jpg;base64,"+item.image} key={index} width="100px" />
-          ))}
           <GameCards currentGames={currentGames} consoleType={consoleType} />
         </div>
         <form onSubmit={handleSubmit} className="section__form" ref={formRef}>
@@ -140,11 +91,7 @@ const MainPage = ({ consoleType }) => {
             setInputText={setInputText}
             setCurrentGames={setCurrentGames}
             defaultGames={defaultGames}
-            allGames={allGames}
-            playGames={playGames}
-            xboxGames={xboxGames}
-            consolesRef={consolesRef}
-            newOrUsedRef={newOrUsedRef}
+            allPosts={allPosts}
           />
         </form>
       </main>

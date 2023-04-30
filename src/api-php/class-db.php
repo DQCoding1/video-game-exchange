@@ -40,8 +40,10 @@
           }
     }
     
-    public function postgame($image){
-        $query = "INSERT INTO user_posts (image) VALUES ('$image')";
+    
+    public function postgame($user_id, $image, $name_of_game, $console_type, $is_new, $description){
+        $query = "INSERT INTO posts (user_id, image, name_of_game, console_type, is_new, description )
+                  VALUES ('$user_id', '$image', '$name_of_game', '$console_type', '$is_new', '$description')";
         $this->conn->exec($query);
         echo json_encode(array("result" => "posted game"));
     }
@@ -49,12 +51,18 @@
     
     public function getAllPosts(){
         $result = array();
-        $query = "SELECT * FROM user_posts";
+        $query = "SELECT * FROM posts";
         $statement = $this->conn->prepare($query);
         $statement->execute();
         while ($data = $statement->fetch()){
             $result[] = array(
-                "image" => base64_encode($data["image"])      
+                "post_id" => $data["post_id"],
+                "user_id" => $data["user_id"],
+                "name_of_game" => $data["name_of_game"],
+                "console_type" => $data["console_type"],
+                "is_new" => $data["is_new"],
+                "description" => $data["description"],
+                "image" => base64_encode($data["image"])
               );
         }
         echo json_encode($result);

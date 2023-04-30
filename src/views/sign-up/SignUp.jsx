@@ -63,16 +63,16 @@ const SignUp = () => {
         fetch(url, optionsFetch)
           .then(res => res.json())
           .then(data => {
-            // console.log(data)
-            userContextInfo.setUserInfo({
-              userName: infoSignUp.userName
-            })
+            console.log(data)
+            // userContextInfo.setUserInfo({
+            //   userName: infoSignUp.userName
+            // })
     
-            signUpSuccessRef.current.classList.add("signUp__success--visible");
-            setTimeout(() => {
-              signUpSuccessRef.current.classList.remove("signUp__success--visible");
-              navigate(PublicRoutes.PLAYANDXBOX);
-            }, 3000);
+            // signUpSuccessRef.current.classList.add("signUp__success--visible");
+            // setTimeout(() => {
+            //   signUpSuccessRef.current.classList.remove("signUp__success--visible");
+            //   navigate(PublicRoutes.PLAYANDXBOX);
+            // }, 3000);
           })
           .catch(err => console.log(err))
 

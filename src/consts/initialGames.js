@@ -236,4 +236,3 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/red dead redemption 2 playStation 4.jpg")
   },
 ];
-

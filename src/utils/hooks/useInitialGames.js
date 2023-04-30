@@ -1,33 +1,47 @@
-import { useState } from "react";
-import { allInitialGames } from "../../consts/initialGames";
+import { useState, useEffect } from "react";
 
-const useInitialGames = () => {
+const useInitialGames = (consoleType) => {
+  const [allPosts, setAllPosts] = useState([])
   const [defaultGames, setDefaultGames] = useState([]);
+  const [currentGames, setCurrentGames] = useState([]);
 
-  const allGames = (setState) => {
-    setState(allInitialGames);
-  };
 
-  const playGames = (setState) => {
-    const initialPlayGames = allInitialGames.filter((item) =>
-      item.consoleType.includes("playStation")
-    );
-    setState(initialPlayGames);
-  };
+  useEffect(() => {
+    fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php")
+    .then(res => res.json())
+    .then(data => {
+      switch (consoleType) {
+        case "PlayStation And Xbox":
+          setDefaultGames(data);
+          setCurrentGames(data);
+          break;
+        case "PlayStation":
+          const initialPlayGames = data.filter((item) =>
+            item.console_type.includes("playStation")
+          );
+          setDefaultGames(initialPlayGames)
+          setCurrentGames(initialPlayGames)
+          break;
+        case "Xbox":
+          const initialXboxGames = data.filter((item) =>
+            item.console_type.includes("xbox")
+          );
+          setDefaultGames(initialXboxGames)
+          setCurrentGames(initialXboxGames)
+          break;
+        default:
+          setAllPosts(data)
+        }
+      })
+  },[])
 
-  const xboxGames = (setState) => {
-    const initialXboxGames = allInitialGames.filter((item) =>
-      item.consoleType.includes("xbox")
-    );
-    setState(initialXboxGames);
-  };
+  
 
   return {
+    allPosts,
     defaultGames,
-    setDefaultGames,
-    allGames,
-    playGames,
-    xboxGames,
+    currentGames,
+    setCurrentGames,
   };
 };
 

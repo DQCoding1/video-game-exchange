@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 import { Link } from "react-router-dom";
 import { PrivateRoutes, PublicRoutes } from "../routes/routes";
 import { NavLink } from "react-router-dom";
@@ -10,12 +10,27 @@ const FilterForm = ({
   setInputText,
   setCurrentGames,
   defaultGames,
-  allGames,
-  playGames,
-  xboxGames,
-  consolesRef,
-  newOrUsedRef,
+  allPosts,
 }) => {
+  
+  const consolesRef = {
+    refPlay3: useRef(),
+    refPlay4: useRef(),
+    refPlay5: useRef(),
+    refXbox360: useRef(),
+    refXboxSeries: useRef(),
+    refXboxOne: useRef(),
+  };
+
+  const newOrUsedRef = {
+    refNew: useRef(),
+    refUsed: useRef(),
+    refNewAndUsed: useRef(),
+  };
+
+  const formRef = useRef();
+
+
   const filterNewGames = () => {
     let guideVariable = true;
     const referencesArr = Object.values(consolesRef);
@@ -24,7 +39,7 @@ const FilterForm = ({
       if (itemReference?.current?.checked) {
         const newGames = defaultGames.filter(
           (item) =>
-            item.isNew && item.consoleType.includes(itemReference.current.id)
+            item.is_new === "true" && item.console_type.includes(itemReference.current.id)
         );
         setCurrentGames(newGames);
         guideVariable = false;
@@ -32,7 +47,7 @@ const FilterForm = ({
       }
     }
     if (guideVariable) {
-      const newGames = defaultGames.filter((item) => item.isNew);
+      const newGames = defaultGames.filter((item) => item.is_new === "true");
       setCurrentGames(newGames);
     }
   };
@@ -45,7 +60,7 @@ const FilterForm = ({
       if (itemReference?.current?.checked) {
         const usedGames = defaultGames.filter(
           (item) =>
-            !item.isNew && item.consoleType.includes(itemReference.current.id)
+            item.is_new === "false" && item.console_type.includes(itemReference.current.id)
         );
         setCurrentGames(usedGames);
         guideVariable = false;
@@ -53,7 +68,7 @@ const FilterForm = ({
       }
     }
     if (guideVariable) {
-      const usedGames = defaultGames.filter((item) => !item.isNew);
+      const usedGames = defaultGames.filter((item) => item.is_new === "false");
       setCurrentGames(usedGames);
     }
   };
@@ -65,7 +80,7 @@ const FilterForm = ({
       let itemReference = referencesArr[i];
       if (itemReference?.current?.checked) {
         const newAndUsedGames = defaultGames.filter((item) =>
-          item.consoleType.includes(itemReference.current.id)
+          item.console_type.includes(itemReference.current.id)
         );
         setCurrentGames(newAndUsedGames);
         guideVariable = false;
@@ -82,15 +97,15 @@ const FilterForm = ({
       if (itemReference?.current?.checked) {
         if (itemReference.current.id === "newAndUsed") {
           const newState = defaultGames.filter((item) =>
-            item.consoleType.includes(specificConsole)
+            item.console_type.includes(specificConsole)
           );
           setCurrentGames(newState);
           break;
         } else {
-          const isNew = itemReference.current.id === "newGame" ? true : false;
+          const isNew = itemReference.current.id === "newGame" ? "true" : "false";
           const newState = defaultGames.filter(
             (item) =>
-              item.consoleType.includes(specificConsole) && item.isNew === isNew
+              item.console_type.includes(specificConsole) && item.is_new === isNew
           );
           setCurrentGames(newState);
           break;
@@ -99,8 +114,25 @@ const FilterForm = ({
     }
   };
 
-  const backToInitialGames = (updateState) => {
-    updateState(setCurrentGames);
+  const backToInitialGames = (typeOfGames) => {
+    switch (typeOfGames) {
+      case "PlayGames":
+        setCurrentGames(allPosts);
+        break;
+      case "xboxGames":
+        const initialPlayGames = allPosts.filter((item) =>
+          item.console_type.includes("playStation")
+        );
+        setCurrentGames(initialPlayGames)
+        break;
+      case "allGames":
+        const initialXboxGames = allPosts.filter((item) =>
+          item.console_type.includes("xbox")
+        );
+        setCurrentGames(initialXboxGames)
+        break;
+      }
+
     const referencesArr = Object.values(consolesRef);
     for (let i = 0; i < referencesArr.length; i++) {
       let itemReference = referencesArr[i];
@@ -118,7 +150,7 @@ const FilterForm = ({
         <li className="consoles__consoleContainer">
           <NavLink
             to={PublicRoutes.PLAYANDXBOX}
-            onClick={() => backToInitialGames(allGames)}
+            onClick={() => backToInitialGames("allGames")}
             className={({ isActive }) =>
               isActive
                 ? "consoles__playAndXboxLink--on"
@@ -225,7 +257,7 @@ const FilterForm = ({
         <li className="consoles__consoleContainer">
           <NavLink
             to={PublicRoutes.PLAYSTATION}
-            onClick={() => backToInitialGames(playGames)}
+            onClick={() => backToInitialGames("playGames")}
             className={({ isActive }) =>
               isActive ? "consoles__playLink--on" : "consoles__playLink--off"
             }
@@ -285,7 +317,7 @@ const FilterForm = ({
         <li className="consoles__consoleContainer">
           <NavLink
             to={PublicRoutes.XBOX}
-            onClick={() => backToInitialGames(xboxGames)}
+            onClick={() => backToInitialGames("xboxGames")}
             className={({ isActive }) =>
               isActive ? "consoles__xboxLink--on" : "consoles__xboxLink--off"
             }

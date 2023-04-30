@@ -80,10 +80,15 @@ const PostGame = () => {
     //   }, 3000);
     // }
 
-    const fd = new FormData();
-    fd.append("image", inputFileRef.current.files["0"])
-    axios.post("https://videogame-exchange.000webhostapp.com/api-php/postgame.php", fd)
-    .then(data => console.log(data.data))
+    const fd = new FormData()
+    // fd.append("user_id",  get from the user context)
+    // fd.append("name_of_game",  newGame.nameOfGame)
+    // fd.append("console_type",  newGame.consoleType)
+    // fd.append("is_new",  newGame.isNew)
+    // fd.append("description",  newGame.description)
+    // fd.append("image", inputFileRef.current.files["0"])
+    // axios.post("https://videogame-exchange.000webhostapp.com/api-php/postgame.php", fd)
+    // .then(data => console.log(data.data))
   };
 
   const handleClickImgContainer = () => {
