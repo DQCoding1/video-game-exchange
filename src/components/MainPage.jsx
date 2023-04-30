@@ -7,13 +7,15 @@ import burgerSvg from "../assets/svg/burger.svg";
 import closeSvg from "../assets/svg/close.svg";
 import "./MainPage.scss";
 import { UserContext } from "../contexts/User";
+import { PostsContext } from "../contexts/Posts";
 import { PublicRoutes } from "../routes/routes";
 
 const MainPage = ({ consoleType }) => {
   const { allPosts, defaultGames, currentGames, setCurrentGames} =
-    useInitialGames(consoleType);
+  useInitialGames(consoleType);
   const [inputText, setInputText] = useState("");
   const userContextInfo = useContext(UserContext);
+  const postsContextInfo = useContext(PostsContext)
   const navigate = useNavigate();
   const formRef = useRef();
 
@@ -75,9 +77,16 @@ const MainPage = ({ consoleType }) => {
           `🖐 Welcome ${userContextInfo.userInfo.userName} !`}
       </div>
       <main className="section__main">
+      {!postsContextInfo.postsStateContext.length > 0
+      ?
+        <div className="section__loadingContainer">
+          <div className="section__loading"></div>
+        </div>
+      :
         <div className="section__cards">
           <GameCards currentGames={currentGames} consoleType={consoleType} />
         </div>
+      }
         <form onSubmit={handleSubmit} className="section__form" ref={formRef}>
           <img
             src={closeSvg}
