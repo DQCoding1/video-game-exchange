@@ -63,6 +63,14 @@
         echo json_encode(array("result" => "posted game"));
     }
     
+    public function getUserName($user_id){
+      $query = "SELECT user_name FROM users WHERE id = $user_id";
+      $statement = $this->conn->prepare($query);
+      $statement->execute();
+      $data = $statement->fetch();
+      echo json_encode(array("user_name" => $data["user_name"]));
+    }
+    
     
     public function getAllPosts(){
         $result = array();

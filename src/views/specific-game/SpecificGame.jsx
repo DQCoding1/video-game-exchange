@@ -1,17 +1,35 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { allInitialGames } from "../../consts/initialGames";
 import { PublicRoutes } from "../../routes/routes";
 import "./SpecificGame.scss";
+import { PostsContext } from "../../contexts/Posts";
+import { useState } from "react";
 
 const SpecificGame = () => {
   const textAreaRef = useRef();
   const messageSuccess = useRef();
   const navigate = useNavigate();
   const { idSpecificGame } = useParams();
-  const infoSpecifiGame = allInitialGames.find(
-    (item) => item.id === Number(idSpecificGame)
-  );
+  const postsInfoContext = useContext(PostsContext)
+  const [infoSpecificGame, setInfoSpecificGame] = useState(postsInfoContext.postsStateContext.find(
+    (item) => item.post_id === idSpecificGame
+  ))
+
+  useEffect(() => {
+    const url = 
+      `https://videogame-exchange.000webhostapp.com/api-php/index.php?user_id=${infoSpecificGame.user_id}`
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setInfoSpecificGame({
+          ...infoSpecificGame,
+          user_name : data.user_name
+        })
+      })
+      .catch(err => console.log(err))
+  },[])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,23 +56,23 @@ const SpecificGame = () => {
 
   return (
     <section className="specificGame">
-      <h1 className="specificGame__h1">{infoSpecifiGame?.nameOfGame}</h1>
+      <h1 className="specificGame__h1">{infoSpecificGame?.name_of_game}</h1>
       <div className="specificGame__game">
         <img
-          src={infoSpecifiGame && infoSpecifiGame.image}
-          alt={`${idSpecificGame?.nameOfGame}`}
+          src={"data:image/jpg;base64,"+infoSpecificGame.image} 
+          alt={idSpecificGame?.name_of_game}
           className="specificGame__img"
         />
         <div className="specificGame__texts">
-          <div className="specificGame__user">{infoSpecifiGame?.userName}</div>
+          <div className="specificGame__user">user : {infoSpecificGame?.user_name}</div>
           <div className="specificGame__gameState">
-            {infoSpecifiGame?.isNew ? "New game" : "Used game"}
+            game state : {infoSpecificGame?.is_new === "true" ? "new" : "used"}
           </div>
           <div className="specificGame__console">
-            {infoSpecifiGame?.consoleType}
+            console : {infoSpecificGame?.console_type}
           </div>
           <p className="specificGame__description">
-            {infoSpecifiGame?.description}
+            description : {infoSpecificGame?.description}
           </p>
         </div>
       </div>

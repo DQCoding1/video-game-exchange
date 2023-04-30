@@ -1,15 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { PostsContext } from "../../contexts/Posts";
 
 const useInitialGames = (consoleType) => {
   const [allPosts, setAllPosts] = useState([])
   const [defaultGames, setDefaultGames] = useState([]);
   const [currentGames, setCurrentGames] = useState([]);
-
+  const PostsInfoContext = useContext(PostsContext)
 
   useEffect(() => {
     fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php")
     .then(res => res.json())
     .then(data => {
+      setAllPosts(data)
+      PostsInfoContext.setPostsStateContext(data)
+
       switch (consoleType) {
         case "PlayStation And Xbox":
           setDefaultGames(data);
@@ -29,8 +33,6 @@ const useInitialGames = (consoleType) => {
           setDefaultGames(initialXboxGames)
           setCurrentGames(initialXboxGames)
           break;
-        default:
-          setAllPosts(data)
         }
       })
   },[])

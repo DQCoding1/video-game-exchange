@@ -10,30 +10,33 @@ import ValidateProtectedRoutes from "./components/ValidateProtectedRoutes";
 import SignUp from "./views/sign-up/SignUp";
 import Login from "./views/login/Login";
 import UserProvider from "./contexts/User";
+import PostsProvider from "./contexts/Posts";
 
 function App() {
   return (
     <UserProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/video-game-exchange" element={<EntryPage />} />
-          <Route path={PublicRoutes.PLAYANDXBOX} element={<PlayAndXbox />} />
-          <Route path={PublicRoutes.PLAYSTATION} element={<PlayStation />} />
-          <Route path={PublicRoutes.XBOX} element={<Xbox />} />
-          <Route
-            path={`${PublicRoutes.SPECIFICGAME}/:idSpecificGame`}
-            element={<SpecificGame />}
-          />
-          <Route path={PrivateRoutes.POSTGAME} element={
-            <ValidateProtectedRoutes>
-              <PostGame />
-            </ValidateProtectedRoutes>
-          } />
-          <Route path={PublicRoutes.SIGNUP} element={<SignUp />} />
-          <Route path={PublicRoutes.LOGIN} element={<Login />} />
-          <Route path="*" element={<div>Not Found</div>} />
-        </Routes>
-      </BrowserRouter>
+      <PostsProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/video-game-exchange" element={<EntryPage />} />
+            <Route path={PublicRoutes.PLAYANDXBOX} element={<PlayAndXbox />} />
+            <Route path={PublicRoutes.PLAYSTATION} element={<PlayStation />} />
+            <Route path={PublicRoutes.XBOX} element={<Xbox />} />
+            <Route
+              path={`${PublicRoutes.SPECIFICGAME}/:idSpecificGame`}
+              element={<SpecificGame />}
+            />
+            <Route path={PrivateRoutes.POSTGAME} element={
+              <ValidateProtectedRoutes>
+                <PostGame />
+              </ValidateProtectedRoutes>
+            } />
+            <Route path={PublicRoutes.SIGNUP} element={<SignUp />} />
+            <Route path={PublicRoutes.LOGIN} element={<Login />} />
+            <Route path="*" element={<div>Not Found</div>} />
+          </Routes>
+        </BrowserRouter>
+      </PostsProvider>
     </UserProvider>
   );
 }

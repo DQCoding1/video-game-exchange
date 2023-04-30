@@ -9,8 +9,12 @@
   switch($_SERVER["REQUEST_METHOD"]){
     case "GET":
         $conn = new Db();
-        $conn->getAllPosts();
-      break;
+        if (isset($_GET["user_id"])){
+          $conn->getUserName($_GET["user_id"]);    
+        }else {
+          $conn->getAllPosts();
+          break;
+        }
       
       
     case "POST":
