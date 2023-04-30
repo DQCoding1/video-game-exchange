@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/video-game-exchange/static/css/main.5127ac6a.css",
-    "main.js": "/video-game-exchange/static/js/main.488ed1ff.js",
+    "main.css": "/video-game-exchange/static/css/main.327731b4.css",
+    "main.js": "/video-game-exchange/static/js/main.7603c3f0.js",
     "static/media/resident evil 5 playStation 4.jpg": "/video-game-exchange/static/media/resident evil 5 playStation 4.9d77bfc713649954af5b.jpg",
     "static/media/atlas fallen xbox series.jpg": "/video-game-exchange/static/media/atlas fallen xbox series.bb81c5df8a22dc879194.jpg",
     "static/media/fifa 21 xbox series.jpg": "/video-game-exchange/static/media/fifa 21 xbox series.c4228b39a83bffb0145e.jpg",
@@ -32,11 +32,11 @@
     "index.html": "/video-game-exchange/index.html",
     "static/media/close.svg": "/video-game-exchange/static/media/close.08233535a9321b39bf5f4a13e34fede0.svg",
     "static/media/burger.svg": "/video-game-exchange/static/media/burger.113d59e2703636dfe157ec8ec962d598.svg",
-    "main.5127ac6a.css.map": "/video-game-exchange/static/css/main.5127ac6a.css.map",
-    "main.488ed1ff.js.map": "/video-game-exchange/static/js/main.488ed1ff.js.map"
+    "main.327731b4.css.map": "/video-game-exchange/static/css/main.327731b4.css.map",
+    "main.7603c3f0.js.map": "/video-game-exchange/static/js/main.7603c3f0.js.map"
   },
   "entrypoints": [
-    "static/css/main.5127ac6a.css",
-    "static/js/main.488ed1ff.js"
+    "static/css/main.327731b4.css",
+    "static/js/main.7603c3f0.js"
   ]
 }
