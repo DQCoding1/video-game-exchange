@@ -11,23 +11,26 @@ const useInitialGames = (consoleType) => {
     fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php")
     .then(res => res.json())
     .then(data => {
-      setAllPosts(data)
-      PostsInfoContext.setPostsStateContext(data)
+      const reversedData = [...data]
+      reversedData.reverse()
+
+      setAllPosts(reversedData)
+      PostsInfoContext.setPostsStateContext(reversedData)
 
       switch (consoleType) {
         case "PlayStation And Xbox":
-          setDefaultGames(data);
-          setCurrentGames(data);
+          setDefaultGames(reversedData);
+          setCurrentGames(reversedData);
           break;
         case "PlayStation":
-          const initialPlayGames = data.filter((item) =>
+          const initialPlayGames = reversedData.filter((item) =>
             item.console_type.includes("playStation")
           );
           setDefaultGames(initialPlayGames)
           setCurrentGames(initialPlayGames)
           break;
         case "Xbox":
-          const initialXboxGames = data.filter((item) =>
+          const initialXboxGames = reversedData.filter((item) =>
             item.console_type.includes("xbox")
           );
           setDefaultGames(initialXboxGames)
