@@ -437,9 +437,6 @@ const FilterForm = ({
       <Link
         to={PrivateRoutes.POSTGAME}
         className="linkToPost"
-        onClick={() => {
-          localStorage.getItem("userStorage") || alert("You need an account");
-        }}
       >
         Post a game
       </Link>

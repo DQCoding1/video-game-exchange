@@ -25,7 +25,7 @@ const GameCards = ({ currentGames, consoleType }) => {
           <article key={item.post_id} className="article">
             <img 
               src={"data:image/jpg;base64,"+item.image} 
-              key={item.post_id} alt={`${item.nameOfGame}`}
+              alt={item.name_of_game}
               className="article__img"
               loading="lazy"
             />

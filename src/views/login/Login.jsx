@@ -12,15 +12,16 @@ const initialInfoLogin = {
 
 const Login = () => {
   const [infoLogin, setInfoLogin] = useState(initialInfoLogin);
-  const [credentials, setCredentials] = useState("");
+  const [credentials, setCredentials] = useState({});
   const userContextInfo = useContext(UserContext)
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(credentials === true){
+    if(credentials?.correctCredentials === true){
       setTimeout(() => navigate(PublicRoutes.PLAYANDXBOX),1500)
       userContextInfo.setUserInfo({
-        userName: infoLogin.user_name
+        userName : infoLogin.user_name,
+        userId : credentials.user_id
       })
     }
   }, [credentials])
@@ -45,7 +46,16 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-        setCredentials(data.correctCredentials);
+        if (data.correctCredentials){
+          setCredentials({
+            correctCredentials: data.correctCredentials,
+            user_id: data.user_id,
+          });
+        } else {
+          setCredentials({
+            correctCredentials: data.correctCredentials,
+          });
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -63,14 +73,14 @@ const Login = () => {
         BACK TO MAIN
       </Link>
       <form onSubmit={handleSubmit} className="login__form">
-        {credentials === false && (
+        {credentials?.correctCredentials === false && (
           <div className="login__incorrectPassword">Incorrect Password</div>
         )}
-        {credentials === true && (
+        {credentials?.correctCredentials === true && (
           <div className="login__correctCredentials">Correct Credentials</div>
         )}
-        {credentials === "user does not exist" && (
-          <div className="login__userDoesNotExist">{credentials}</div>
+        {credentials?.correctCredentials === "user does not exist" && (
+          <div className="login__userDoesNotExist">{credentials?.correctCredentials}</div>
         )}
         <h1 className="login__title">Login</h1>
         <div className="login__inputContainer">

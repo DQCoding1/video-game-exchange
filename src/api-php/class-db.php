@@ -18,23 +18,38 @@
 
 
     public function createUser($userName, $email, $password){
-      $query = "INSERT INTO users (user_name, email, password) 
+      $createUserQuery = "INSERT INTO users (user_name, email, password) 
                 VALUES ('$userName' ,'$email', '$password')";
-      $this->conn->exec($query);
-      $result = array("user" => "user {$userName} created");
-      echo json_encode($result);
-    }
+      $this->conn->exec($createUserQuery);
+      
+      
+      $getUserCreatedQuery = "SELECT id, user_name FROM users WHERE user_name = '$userName'";
+      $statement = $this->conn->prepare($getUserCreatedQuery);
+      $statement->execute();
+      $result = $statement->fetchAll();
+        $user_id = $result[0]["id"];
+        $user_name = $result[0]["user_name"];
+        echo json_encode(array(
+            "user_id" => $user_id,
+            "user_name" => $user_name
+            ));
+      }
+      
     
     
     public function validateUser($userName, $password){
-          $query = "SELECT password FROM users WHERE user_name = '$userName'";
+          $query = "SELECT id, password FROM users WHERE user_name = '$userName'";
           $statement = $this->conn->prepare($query);
           $statement->execute();
           $result = $statement->fetchAll();
           if (count($result) > 0){
+            $user_id = $result[0]["id"];
             $passwordHash = $result[0]["password"];
             $isSamePassword = password_verify($password, $passwordHash);
-            echo json_encode(array("correctCredentials" => $isSamePassword));
+            echo json_encode(array(
+                "correctCredentials" => $isSamePassword,
+                "user_id" => $user_id,
+                ));
           } else {
             echo json_encode(array("correctCredentials" => "user does not exist"));
           }

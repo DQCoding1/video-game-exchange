@@ -45,7 +45,6 @@ const SignUp = () => {
         (i) => i.userName === infoSignUp.userName
       );
       if (repetedUser === undefined) {
-        // localStorage.setItem("userStorage", infoSignUp.userName);
         const url = "https://videogame-exchange.000webhostapp.com/api-php/index.php";
         const optionsFetch = {
           method: "POST",
@@ -63,16 +62,17 @@ const SignUp = () => {
         fetch(url, optionsFetch)
           .then(res => res.json())
           .then(data => {
-            console.log(data)
-            // userContextInfo.setUserInfo({
-            //   userName: infoSignUp.userName
-            // })
+            // console.log(data)
+            userContextInfo.setUserInfo({
+                userId: data.user_id,
+                userName : data.user_name
+            })
     
-            // signUpSuccessRef.current.classList.add("signUp__success--visible");
-            // setTimeout(() => {
-            //   signUpSuccessRef.current.classList.remove("signUp__success--visible");
-            //   navigate(PublicRoutes.PLAYANDXBOX);
-            // }, 3000);
+            signUpSuccessRef.current.classList.add("signUp__success--visible");
+            setTimeout(() => {
+              signUpSuccessRef.current.classList.remove("signUp__success--visible");
+              navigate(PublicRoutes.PLAYANDXBOX);
+            }, 3000);
           })
           .catch(err => console.log(err))
 
