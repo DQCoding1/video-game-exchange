@@ -21,7 +21,7 @@ const MainPage = ({ consoleType }) => {
     e.preventDefault();
     const inputValue = inputText.toLowerCase().trim();
     const nameOfGameMatches = defaultGames.filter((item) =>
-      item.nameOfGame.toLowerCase().includes(inputValue)
+      item.name_of_game.toLowerCase().includes(inputValue)
     );
     setCurrentGames(nameOfGameMatches);
     setInputText("");
