@@ -18,7 +18,6 @@ const PostsProvider = ({ children }) => {
       setAllPosts(reversedData);
       })
     .catch(err => console.log(err))
-    
   }, []);
 
   useEffect(() => {

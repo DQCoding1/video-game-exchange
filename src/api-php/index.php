@@ -15,6 +15,9 @@
         else if (isset($_GET["users_and_emails"])){
           $conn->getUsersAndEmails();        
         }
+        else if (isset($_GET["lastPostByUser"])){
+          $conn->getLastPostByUser($_GET["lastPostByUser"]);        
+        }
          else {
           $conn->getAllPosts();
           break;

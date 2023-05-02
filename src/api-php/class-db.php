@@ -91,6 +91,29 @@
     
     
     
+    public function getLastPostByUser($user_id){
+        $result = array();
+        $query = "SELECT MAX(post_id) as post_id, user_id, image, name_of_game, console_type, is_new, description
+                  FROM posts 
+                  WHERE user_id = '$user_id'";
+        $statement = $this->conn->prepare($query);
+        $statement->execute();
+        while ($data = $statement->fetch()){
+            $result[] = array(
+                "post_id" => $data["post_id"],
+                "user_id" => $data["user_id"],
+                "name_of_game" => $data["name_of_game"],
+                "console_type" => $data["console_type"],
+                "is_new" => $data["is_new"],
+                "description" => $data["description"],
+                "image" => base64_encode($data["image"])
+              );
+        }
+        echo json_encode($result);   
+    }
+    
+    
+    
     public function getAllPosts(){
         $result = array();
         $query = "SELECT * FROM posts";

@@ -1,29 +1,28 @@
 import React, { useRef, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { allInitialGames } from "../../consts/initialGames";
-import { v4 as uuidv4 } from "uuid";
-import "./PostGame.scss";
 import { PublicRoutes } from "../../routes/routes";
-import axios from "axios";
 import { UserContext } from "../../contexts/User";
+import { PostsContext } from "../../contexts/Posts";
+import axios from "axios";
+import "./PostGame.scss";
 
 
 
 const PostGame = () => {
   const [newGame, setNewGame] = useState({
-    id: allInitialGames.length + 1,
-    userName: localStorage.getItem("userStorage"),
     nameOfGame: "",
     consoleType: "",
     isNew: "",
     description: "",
     image: "",
   });
+
   const imgContainerRef = useRef();
   const inputFileRef = useRef();
   const messageSuccess = useRef();
   const navigate = useNavigate();
   const userContextInfo = useContext(UserContext)
+  const postsContextInfo = useContext(PostsContext)
 
   const uploadImage = (e) => {
     const files = e.target.files;
@@ -72,8 +71,6 @@ const PostGame = () => {
       alert("inputs can't be empty");
     } else {
       messageSuccess.current.classList.add("postGame__success--visible");
-      allInitialGames.unshift(newGame);
-      localStorage.setItem("image", newGame.image);
       messageSuccess.current.classList.add("specificGame__success--visible");
       setTimeout(() => {
         return (
