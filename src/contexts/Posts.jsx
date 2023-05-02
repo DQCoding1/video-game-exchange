@@ -7,7 +7,7 @@ const PostsProvider = ({ children }) => {
   const [playPosts, setPlayPosts] = useState([]);
   const [xboxPosts, setXboxPosts] = useState([]);
 
-  console.log(allPosts);
+  // console.log(allPosts);
 
   useEffect(() => {
     fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php")

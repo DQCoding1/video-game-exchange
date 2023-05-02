@@ -1,10 +1,9 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import signUpImage from "../../assets/signUp.jpg";
-import { PrivateRoutes, PublicRoutes } from "../../routes/routes";
-import { allInitialGames } from "../../consts/initialGames";
-import "./SignUp.scss";
+import { PublicRoutes } from "../../routes/routes";
 import { UserContext } from "../../contexts/User";
+import signUpImage from "../../assets/signUp.jpg";
+import "./SignUp.scss";
 
 const initialSignUp = {
   action: "signup",
@@ -18,9 +17,20 @@ const regExpPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
 
 const SignUp = () => {
   const [infoSignUp, setInfoSignUp] = useState(initialSignUp);
+  const [usersAndEmails, setUsersAndEmails] = useState([])
   const signUpSuccessRef = useRef();
   const navigate = useNavigate();
   const userContextInfo = useContext(UserContext)
+
+  useEffect(() => {
+    const url = "https://videogame-exchange.000webhostapp.com/api-php/index.php?users_and_emails=true"
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setUsersAndEmails([...data])
+      })
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,10 +51,13 @@ const SignUp = () => {
       );
       return;
     } else {
-      const repetedUser = allInitialGames.find(
-        (i) => i.userName === infoSignUp.userName
+      const repetedUser = usersAndEmails.find(
+        (i) => i.user_name === infoSignUp.userName
       );
-      if (repetedUser === undefined) {
+      const repeatedEmail = usersAndEmails.find(
+        (i) => i.email === infoSignUp.email
+      );
+      if (repetedUser === undefined && repeatedEmail === undefined) {
         const url = "https://videogame-exchange.000webhostapp.com/api-php/index.php";
         const optionsFetch = {
           method: "POST",
@@ -76,9 +89,10 @@ const SignUp = () => {
           })
           .catch(err => console.log(err))
 
-        
-      } else {
+      } else if (repetedUser !== undefined){
         alert("User already exists");
+      } else if (repeatedEmail !== undefined){
+        alert("Email already exists");
       }
     }
   };
