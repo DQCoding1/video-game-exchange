@@ -10,8 +10,12 @@
     case "GET":
         $conn = new Db();
         if (isset($_GET["user_id"])){
-          $conn->getUserName($_GET["user_id"]);    
-        }else {
+          $conn->getUserName($_GET["user_id"]);
+        }
+        else if (isset($_GET["users_and_emails"])){
+          $conn->getUsersAndEmails();        
+        }
+         else {
           $conn->getAllPosts();
           break;
         }

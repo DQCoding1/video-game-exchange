@@ -56,12 +56,15 @@
     }
     
     
+    
     public function postgame($user_id, $image, $name_of_game, $console_type, $is_new, $description){
         $query = "INSERT INTO posts (user_id, image, name_of_game, console_type, is_new, description )
                   VALUES ('$user_id', '$image', '$name_of_game', '$console_type', '$is_new', '$description')";
         $this->conn->exec($query);
         echo json_encode(array("result" => "posted game"));
     }
+    
+    
     
     public function getUserName($user_id){
       $query = "SELECT user_name FROM users WHERE id = $user_id";
@@ -70,6 +73,22 @@
       $data = $statement->fetch();
       echo json_encode(array("user_name" => $data["user_name"]));
     }
+    
+    
+    public function getUsersAndEmails(){
+      $result = array();
+      $query = "SELECT user_name, email FROM users";
+      $statement = $this->conn->prepare($query);
+      $statement->execute();
+      while ($data = $statement->fetch()){
+        $result[] = array(
+                "user_name" => $data["user_name"],
+                "email" => $data["email"]
+            );
+      }
+      echo json_encode($result);
+    }
+    
     
     
     public function getAllPosts(){
