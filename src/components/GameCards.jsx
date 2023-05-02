@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { PublicRoutes } from "../routes/routes";
+import { consoleTypes } from "../consts/consoleTypes";
 import "./MainPage.scss";
 import "./GameCards.scss";
 
-const GameCards = ({ currentGames, consoleType }) => {
+const GameCards = ({ currentPosts, consoleType }) => {
   const setButtonColor = () => {
     switch (consoleType) {
-      case "PlayStation And Xbox":
+      case consoleTypes.playAndXbox:
         return "article__linkPLayAndXbox";
-      case "PlayStation":
+      case consoleTypes.playStation:
         return "article__linkPLay";
-      case "Xbox":
+      case consoleTypes.xbox:
         return "article__linkXbox";
       default:
         return "consoleType doesn't exist";
@@ -20,8 +21,8 @@ const GameCards = ({ currentGames, consoleType }) => {
 
   return (
     <>
-      {currentGames?.length > 0 ? (
-        currentGames.map((item) => (
+      {currentPosts?.length > 0 ? (
+        currentPosts.map((item) => (
           <article key={item.post_id} className="article">
             <img 
               src={"data:image/jpg;base64,"+item.image} 

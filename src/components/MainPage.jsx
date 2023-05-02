@@ -1,41 +1,61 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useInitialGames from "../utils/hooks/useInitialGames";
+import { useNavigate } from "react-router-dom";
 import GameCards from "./GameCards";
 import FilterForm from "./FilterForm";
-import burgerSvg from "../assets/svg/burger.svg";
-import closeSvg from "../assets/svg/close.svg";
-import "./MainPage.scss";
 import { UserContext } from "../contexts/User";
 import { PostsContext } from "../contexts/Posts";
 import { PublicRoutes } from "../routes/routes";
+import { consoleTypes } from "../consts/consoleTypes";
+import burgerSvg from "../assets/svg/burger.svg";
+import closeSvg from "../assets/svg/close.svg";
+import "./MainPage.scss";
 
 const MainPage = ({ consoleType }) => {
-  const { allPosts, defaultGames, currentGames, setCurrentGames} =
-  useInitialGames(consoleType);
   const [inputText, setInputText] = useState("");
+  const [defaultPosts, setDefaultPosts] = useState([]) 
+  const [currentPosts, setCurrentPosts] = useState([]) 
   const userContextInfo = useContext(UserContext);
   const postsContextInfo = useContext(PostsContext)
   const navigate = useNavigate();
   const formRef = useRef();
 
+  useEffect(() => {
+    if (postsContextInfo.allPosts.length > 0){
+      switch (consoleType){
+        case consoleTypes.playAndXbox:
+          setCurrentPosts([...postsContextInfo.allPosts])
+          setDefaultPosts([...postsContextInfo.allPosts])
+          break;
+          case consoleTypes.playStation:
+          setCurrentPosts([...postsContextInfo.playPosts])
+          setDefaultPosts([...postsContextInfo.playPosts])
+          break;
+        case consoleTypes.xbox:
+          setCurrentPosts([...postsContextInfo.xboxPosts])
+          setDefaultPosts([...postsContextInfo.xboxPosts])
+          break;
+      }
+    }
+  },[postsContextInfo.allPosts])
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const inputValue = inputText.toLowerCase().trim();
-    const nameOfGameMatches = defaultGames.filter((item) =>
+    const nameOfGameMatches = postsContextInfo.allPosts.filter((item) =>
       item.name_of_game.toLowerCase().includes(inputValue)
     );
-    setCurrentGames(nameOfGameMatches);
+    setCurrentPosts(nameOfGameMatches);
     setInputText("");
   };
 
   const setHeaderColor = () => {
     switch (consoleType) {
-      case "PlayStation And Xbox":
+      case consoleTypes.playAndXbox:
         return "section__header";
-      case "PlayStation":
+      case consoleTypes.playStation:
         return "section__header--play";
-      case "Xbox":
+      case consoleTypes.xbox:
         return "section__header--xbox";
     }
   };
@@ -77,7 +97,7 @@ const MainPage = ({ consoleType }) => {
           `🖐 Welcome ${userContextInfo.userInfo.userName} !`}
       </div>
       <main className="section__main">
-      {!postsContextInfo.postsStateContext.length > 0
+      {!postsContextInfo.allPosts.length > 0
       ?
         <div className="section__loadingMainContainer">
           <div className="section__loadingContainer">
@@ -87,7 +107,7 @@ const MainPage = ({ consoleType }) => {
         </div>
       :
         <div className="section__cards">
-          <GameCards currentGames={currentGames} consoleType={consoleType} />
+          <GameCards currentPosts={currentPosts} consoleType={consoleType} />
         </div>
       }
         <form onSubmit={handleSubmit} className="section__form" ref={formRef}>
@@ -101,9 +121,9 @@ const MainPage = ({ consoleType }) => {
             consoleType={consoleType}
             inputText={inputText}
             setInputText={setInputText}
-            setCurrentGames={setCurrentGames}
-            defaultGames={defaultGames}
-            allPosts={allPosts}
+            defaultPosts={defaultPosts}
+            setDefaultPosts={setDefaultPosts}
+            setCurrentPosts={setCurrentPosts}
           />
         </form>
       </main>

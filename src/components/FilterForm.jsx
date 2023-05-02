@@ -1,16 +1,18 @@
-import React, {useRef} from "react";
+import React, {useRef, useContext} from "react";
 import { Link } from "react-router-dom";
 import { PrivateRoutes, PublicRoutes } from "../routes/routes";
 import { NavLink } from "react-router-dom";
 import "./FilterForm.scss";
+import { consoleTypes, specificConsoles } from "../consts/consoleTypes";
+import { PostsContext } from "../contexts/Posts";
 
 const FilterForm = ({
   consoleType,
   inputText,
   setInputText,
-  setCurrentGames,
-  defaultGames,
-  allPosts,
+  defaultPosts,
+  setDefaultPosts,
+  setCurrentPosts,
 }) => {
   
   const consolesRef = {
@@ -28,7 +30,8 @@ const FilterForm = ({
     refNewAndUsed: useRef(),
   };
 
-  const formRef = useRef();
+  const postsContextInfo = useContext(PostsContext)
+
 
 
   const filterNewGames = () => {
@@ -37,18 +40,18 @@ const FilterForm = ({
     for (let i = 0; i < referencesArr.length; i++) {
       let itemReference = referencesArr[i];
       if (itemReference?.current?.checked) {
-        const newGames = defaultGames.filter(
+        const newGames = defaultPosts.filter(
           (item) =>
             item.is_new === "true" && item.console_type.includes(itemReference.current.id)
         );
-        setCurrentGames(newGames);
+        setCurrentPosts(newGames);
         guideVariable = false;
         break;
       }
     }
     if (guideVariable) {
-      const newGames = defaultGames.filter((item) => item.is_new === "true");
-      setCurrentGames(newGames);
+      const newGames = defaultPosts.filter((item) => item.is_new === "true");
+      setCurrentPosts(newGames);
     }
   };
 
@@ -58,18 +61,18 @@ const FilterForm = ({
     for (let i = 0; i < referencesArr.length; i++) {
       let itemReference = referencesArr[i];
       if (itemReference?.current?.checked) {
-        const usedGames = defaultGames.filter(
+        const usedGames = defaultPosts.filter(
           (item) =>
             item.is_new === "false" && item.console_type.includes(itemReference.current.id)
         );
-        setCurrentGames(usedGames);
+        setCurrentPosts(usedGames);
         guideVariable = false;
         break;
       }
     }
     if (guideVariable) {
-      const usedGames = defaultGames.filter((item) => item.is_new === "false");
-      setCurrentGames(usedGames);
+      const usedGames = defaultPosts.filter((item) => item.is_new === "false");
+      setCurrentPosts(usedGames);
     }
   };
 
@@ -79,15 +82,15 @@ const FilterForm = ({
     for (let i = 0; i < referencesArr.length; i++) {
       let itemReference = referencesArr[i];
       if (itemReference?.current?.checked) {
-        const newAndUsedGames = defaultGames.filter((item) =>
+        const newAndUsedGames = defaultPosts.filter((item) =>
           item.console_type.includes(itemReference.current.id)
         );
-        setCurrentGames(newAndUsedGames);
+        setCurrentPosts(newAndUsedGames);
         guideVariable = false;
         break;
       }
     }
-    guideVariable && setCurrentGames(defaultGames);
+    guideVariable && setCurrentPosts(defaultPosts);
   };
 
   const filterSpecificConsole = (specificConsole) => {
@@ -96,40 +99,34 @@ const FilterForm = ({
       let itemReference = referencesArr[i];
       if (itemReference?.current?.checked) {
         if (itemReference.current.id === "newAndUsed") {
-          const newState = defaultGames.filter((item) =>
+          const newState = defaultPosts.filter((item) =>
             item.console_type.includes(specificConsole)
           );
-          setCurrentGames(newState);
+          setCurrentPosts(newState);
           break;
         } else {
           const isNew = itemReference.current.id === "newGame" ? "true" : "false";
-          const newState = defaultGames.filter(
+          const newState = defaultPosts.filter(
             (item) =>
               item.console_type.includes(specificConsole) && item.is_new === isNew
           );
-          setCurrentGames(newState);
+          setCurrentPosts(newState);
           break;
         }
       }
     }
   };
 
-  const backToInitialGames = (typeOfGames) => {
-    switch (typeOfGames) {
-      case "playGames":
-        const initialPlayGames = allPosts.filter((item) =>
-          item.console_type.includes("playStation")
-        );
-        setCurrentGames(initialPlayGames)
+  const backToInitialPosts = (consoleType) => {
+    switch (consoleType) {
+      case consoleTypes.playAndXbox:
+        setCurrentPosts(postsContextInfo.allPosts)
         break;
-      case "xboxGames":
-          const initialXboxGames = allPosts.filter((item) =>
-            item.console_type.includes("xbox")
-          );
-          setCurrentGames(initialXboxGames)  
-          break;
-        case "allGames":
-          setCurrentGames(allPosts);
+      case consoleTypes.playStation:
+        setCurrentPosts(postsContextInfo.playPosts)
+        break;
+      case consoleTypes.xbox:
+        setCurrentPosts(postsContextInfo.xboxPosts)
         break;
       }
 
@@ -150,7 +147,7 @@ const FilterForm = ({
         <li className="consoles__consoleContainer">
           <NavLink
             to={PublicRoutes.PLAYANDXBOX}
-            onClick={() => backToInitialGames("allGames")}
+            onClick={() => backToInitialPosts(consoleTypes.playAndXbox)}
             className={({ isActive }) =>
               isActive
                 ? "consoles__playAndXboxLink--on"
@@ -159,10 +156,10 @@ const FilterForm = ({
           >
             PlayStation And Xbox
           </NavLink>
-          {consoleType === "PlayStation And Xbox" && (
+          {consoleType === consoleTypes.playAndXbox && (
             <ul className="consoles__lists">
               <li
-                onClick={() => filterSpecificConsole("playStation 3")}
+                onClick={() => filterSpecificConsole(specificConsoles.playStation3)}
                 className="consoles__li"
               >
                 <input
@@ -177,7 +174,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("playStation 4")}
+                onClick={() => filterSpecificConsole(specificConsoles.playStation4)}
                 className="consoles__li"
               >
                 <input
@@ -192,7 +189,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("playStation 5")}
+                onClick={() => filterSpecificConsole(specificConsoles.playStation5)}
                 className="consoles__li"
               >
                 <input
@@ -207,7 +204,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("xbox 360")}
+                onClick={() => filterSpecificConsole(specificConsoles.xbox360)}
                 className="consoles__li"
               >
                 <input
@@ -222,7 +219,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("xbox one")}
+                onClick={() => filterSpecificConsole(specificConsoles.xboxOne)}
                 className="consoles__li"
               >
                 <input
@@ -237,7 +234,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("xbox series")}
+                onClick={() => filterSpecificConsole(specificConsoles.xboxSeries)}
                 className="consoles__li"
               >
                 <input
@@ -257,17 +254,17 @@ const FilterForm = ({
         <li className="consoles__consoleContainer">
           <NavLink
             to={PublicRoutes.PLAYSTATION}
-            onClick={() => backToInitialGames("playGames")}
+            onClick={() => backToInitialPosts(consoleTypes.playStation)}
             className={({ isActive }) =>
               isActive ? "consoles__playLink--on" : "consoles__playLink--off"
             }
           >
             PlayStation
           </NavLink>
-          {consoleType === "PlayStation" && (
+          {consoleType === consoleTypes.playStation && (
             <ul className="consoles__lists">
               <li
-                onClick={() => filterSpecificConsole("playStation 3")}
+                onClick={() => filterSpecificConsole(specificConsoles.playStation3)}
                 className="consoles__li"
               >
                 <input
@@ -282,7 +279,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("playStation 4")}
+                onClick={() => filterSpecificConsole(specificConsoles.playStation4)}
                 className="consoles__li"
               >
                 <input
@@ -297,7 +294,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("playStation 5")}
+                onClick={() => filterSpecificConsole(specificConsoles.playStation5)}
                 className="consoles__li"
               >
                 <input
@@ -317,17 +314,17 @@ const FilterForm = ({
         <li className="consoles__consoleContainer">
           <NavLink
             to={PublicRoutes.XBOX}
-            onClick={() => backToInitialGames("xboxGames")}
+            onClick={() => backToInitialPosts(consoleTypes.xbox)}
             className={({ isActive }) =>
               isActive ? "consoles__xboxLink--on" : "consoles__xboxLink--off"
             }
           >
             Xbox
           </NavLink>
-          {consoleType === "Xbox" && (
+          {consoleType === consoleTypes.xbox && (
             <ul className="consoles__lists">
               <li
-                onClick={() => filterSpecificConsole("xbox 360")}
+                onClick={() => filterSpecificConsole(specificConsoles.xbox360)}
                 className="consoles__li"
               >
                 <input
@@ -342,7 +339,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("xbox one")}
+                onClick={() => filterSpecificConsole(specificConsoles.xboxOne)}
                 className="consoles__li"
               >
                 <input
@@ -357,7 +354,7 @@ const FilterForm = ({
                 </label>
               </li>
               <li
-                onClick={() => filterSpecificConsole("xbox series")}
+                onClick={() => filterSpecificConsole(specificConsoles.xboxSeries)}
                 className="consoles__li"
               >
                 <input

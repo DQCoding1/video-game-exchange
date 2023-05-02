@@ -1,34 +1,40 @@
-import React, { useRef, useContext, useEffect } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
-import "./SpecificGame.scss";
 import { PostsContext } from "../../contexts/Posts";
-import { useState } from "react";
+import "./SpecificGame.scss";
 
 const SpecificGame = () => {
-  const textAreaRef = useRef();
-  const messageSuccess = useRef();
-  const navigate = useNavigate();
-  const { idSpecificGame } = useParams();
+  const [infoSpecificGame, setInfoSpecificGame] = useState({})
   const postsInfoContext = useContext(PostsContext)
-  const [infoSpecificGame, setInfoSpecificGame] = useState(postsInfoContext.postsStateContext.find(
-    (item) => item.post_id === idSpecificGame
-  ))
+  const { idSpecificGame } = useParams();
+  const navigate = useNavigate();
+  const messageSuccess = useRef();
+  const textAreaRef = useRef();
 
   useEffect(() => {
-    const url = 
-      `https://videogame-exchange.000webhostapp.com/api-php/index.php?user_id=${infoSpecificGame.user_id}`
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        setInfoSpecificGame({
-          ...infoSpecificGame,
-          user_name : data.user_name
+    if (infoSpecificGame.hasOwnProperty("post_id")){
+      const url = 
+        `https://videogame-exchange.000webhostapp.com/api-php/index.php?user_id=${infoSpecificGame?.user_id}`
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          // console.log(data)
+          setInfoSpecificGame({
+            ...infoSpecificGame,
+            user_name : data.user_name
+          })
         })
-      })
-      .catch(err => console.log(err))
-  },[])
+        .catch(err => console.log(err))
+    }
+  },[infoSpecificGame])
+
+  useEffect(() => {
+    if (postsInfoContext.allPosts.length > 0){
+      const specificPost = postsInfoContext.allPosts.find(item => item.post_id === idSpecificGame)
+      setInfoSpecificGame(specificPost)
+    }
+  },[postsInfoContext.allPosts])
 
 
   const handleSubmit = (e) => {
@@ -58,11 +64,13 @@ const SpecificGame = () => {
     <section className="specificGame">
       <h1 className="specificGame__h1">{infoSpecificGame?.name_of_game}</h1>
       <div className="specificGame__game">
-        <img
-          src={"data:image/jpg;base64,"+infoSpecificGame.image} 
-          alt={idSpecificGame?.name_of_game}
-          className="specificGame__img"
-        />
+        {infoSpecificGame?.image &&
+          <img
+            src={"data:image/jpg;base64,"+infoSpecificGame?.image} 
+            alt={idSpecificGame?.name_of_game}
+            className="specificGame__img"
+          />
+        }
         <div className="specificGame__texts">
           <div className="specificGame__user">user : {infoSpecificGame?.user_name}</div>
           <div className="specificGame__gameState">
