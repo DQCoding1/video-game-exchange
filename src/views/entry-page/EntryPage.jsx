@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
+import { PostsContext } from "../../contexts/Posts";
 import playLogo from "../../assets/logos/play-logo.png";
 import xboxLogo from "../../assets/logos/xbox-logo.png";
 import "./EntryPage.scss";
 
 const EntryPage = () => {
+  const postsContextInfo = useContext(PostsContext)
+
   return (
     <header className="header">
       <h1 className="header__h1">Video Game Exchange</h1>
@@ -30,6 +33,14 @@ const EntryPage = () => {
           <h2 className="header__h2">Xbox</h2>
           <img src={xboxLogo} alt="xbox logo" className="header__img" />
         </Link>
+        {!postsContextInfo.allPosts.length > 0 &&
+        <div className="header__loadingMainContainer">
+          <div className="header__loadingContainer">
+            <div className="header__loadingCircle"></div>
+            <p className="header__loadingText">LOADING ...</p>
+          </div>
+        </div>
+        }
       </div>
     </header>
   );

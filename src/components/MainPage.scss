@@ -90,43 +90,6 @@
     margin-top: 2rem;
   }
 
-  &__loadingMainContainer{
-    position: fixed;
-    z-index: 200;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(166, 165, 165);
-    opacity: .8;
-  }
-
-  &__loadingContainer{
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  &__loadingCircle{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(to bottom, #44d4d9 0%, #2d40ba 100%);
-    animation: movingLoading 1s infinite linear;
-  }
-
-  &__loadingText{
-    font-size: 1.5rem;
-    color: $bg-color;
-    font-weight: 700;
-  }
-
   &__cards{
     display: grid;
     padding: 1.5rem;
@@ -186,15 +149,5 @@
 
   &__noFound{
     font-size: 3rem;
-  }
-}
-
-
-@keyframes movingLoading {
-  0%{
-    transform: rotate(0deg);
-  }
-  100%{
-    transform: rotate(365deg);
   }
 }

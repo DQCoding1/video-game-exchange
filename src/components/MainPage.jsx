@@ -97,19 +97,9 @@ const MainPage = ({ consoleType }) => {
           `🖐 Welcome ${userContextInfo.userInfo.userName} !`}
       </div>
       <main className="section__main">
-      {!postsContextInfo.allPosts.length > 0
-      ?
-        <div className="section__loadingMainContainer">
-          <div className="section__loadingContainer">
-            <div className="section__loadingCircle"></div>
-            <p className="section__loadingText">loading ...</p>
-          </div>
-        </div>
-      :
         <div className="section__cards">
           <GameCards currentPosts={currentPosts} consoleType={consoleType} />
         </div>
-      }
         <form onSubmit={handleSubmit} className="section__form" ref={formRef}>
           <img
             src={closeSvg}
