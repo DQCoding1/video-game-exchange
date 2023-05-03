@@ -93,7 +93,6 @@ const Login = () => {
             name="user_name"
             value={infoLogin.user_name}
             onChange={handleChange}
-            placeholder="User name"
             className="login__usernameInput"
             spellCheck="false"
           />
@@ -107,7 +106,6 @@ const Login = () => {
             id="password"
             name="password"
             value={infoLogin.password}
-            placeholder="password"
             onChange={handleChange}
             className="login__passwordInput"
             />

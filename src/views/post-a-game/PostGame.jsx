@@ -87,10 +87,33 @@ const PostGame = () => {
       fd.append("description",  newGame.description)
       fd.append("image", inputFileRef.current.files["0"])
       axios.post("https://videogame-exchange.000webhostapp.com/api-php/postgame.php", fd)
-      // .then(data => console.log(data.data))
-      .catch(err => console.log(err))
+        .then(data => {
+          // console.log(data.data)
+          axios.get(`https://videogame-exchange.000webhostapp.com/api-php/index.php?lastPostByUser=${userContextInfo.userInfo.userId}`)
+            .then(({ data }) => {
+              console.log(data)
+              const newState = [
+                {
+                  post_id:      data[0].post_id, 
+                  user_id:      data[0].user_id, 
+                  image:        data[0].image, 
+                  name_of_game: data[0].name_of_game, 
+                  console_type: data[0].console_type, 
+                  is_new:       data[0].is_new, 
+                  description:  data[0].description
+                },
+                ...postsContextInfo.allPosts
+              ]
+              console.log(newState);
+              postsContextInfo.setAllPosts(newState)
+            })
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
     }
-  };
+  }
+
+
 
   const handleClickImgContainer = () => {
     inputFileRef.current.click();

@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import { consoleTypes } from "../consts/consoleTypes";
 
 export const PostsContext = createContext();
 
@@ -30,14 +31,14 @@ const PostsProvider = ({ children }) => {
 
   function filterPostsByPlayConsole(){
     const playPosts = allPosts.filter((item) =>
-      item.console_type.includes("playStation")
+      item.console_type?.includes(consoleTypes.playStation)
     );
     return playPosts;
   };
 
   function filterPostsByXboxConsole(){
     const xboxPosts = allPosts.filter((item) =>
-      item.console_type.includes("xbox")
+      item.console_type?.includes(consoleTypes.xbox)
     );
     return xboxPosts;
   };
