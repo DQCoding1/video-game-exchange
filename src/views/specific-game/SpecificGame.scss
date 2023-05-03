@@ -67,6 +67,27 @@
     }
   }
 
+  &__deletePostContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    // border: 2px solid red;
+  }
+  
+  &__deletePost{
+    @include btn(#f39c12, $bg-color);
+    font-weight: 700;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: transform 300ms;
+
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+
   &__form{
     display: flex;
     flex-direction: column;

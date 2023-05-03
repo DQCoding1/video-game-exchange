@@ -88,10 +88,10 @@ const SpecificGame = () => {
       </div>
       {userInfoContext.userInfo.userId === infoSpecificGame?.user_id
       ?
-        <div className="specificGame_deletePostContainer">
-          <button className="specificGame_deletePost">Delete this post</button>
+        <div className="specificGame__deletePostContainer">
+          <button className="specificGame__deletePost">DELETE POST</button>
         </div>
-      :
+      : 
         <form onSubmit={handleSubmit} className="specificGame__form">
           <label htmlFor="textArea" className="specificGame__label">
             write some message to exchange the game
@@ -108,9 +108,8 @@ const SpecificGame = () => {
             value="send message"
             className="specificGame__submit"
           />
-        </form>
-      
-      }
+        </form> 
+      } 
       <div ref={messageSuccess} className="specificGame__success">
         Message sent successfully
       </div>
