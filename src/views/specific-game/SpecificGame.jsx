@@ -32,12 +32,30 @@ const SpecificGame = () => {
     }
   },[infoSpecificGame])
 
+
   useEffect(() => {
     if (postsInfoContext.allPosts.length > 0){
       const specificPost = postsInfoContext.allPosts.find(item => item.post_id === idSpecificGame)
       setInfoSpecificGame(specificPost)
     }
   },[postsInfoContext.allPosts])
+
+
+
+  const handlePopUp = (e) => {
+    if (e.target.id === "yesButton"){
+      navigate(PublicRoutes.PLAYANDXBOX)
+      fetch(`https://videogame-exchange.000webhostapp.com/api-php/index.php?deletePost=${idSpecificGame}`)
+        .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          const newState = postsInfoContext.allPosts.filter((item) => item.post_id !== idSpecificGame)
+          postsInfoContext.setAllPosts(newState)
+        })
+    } else {
+      setShowDeletepostPopUp(false)
+    }
+  }
 
 
   const handleSubmit = (e) => {
@@ -119,13 +137,27 @@ const SpecificGame = () => {
       <div ref={messageSuccess} className="specificGame__success">
         Message sent successfully
       </div>
-      {showDeletepostPopUp ||
+      {showDeletepostPopUp &&
         <div className="specificGame__popUpContainer">
           <div className="specificGame__popUp">
-            <p className="specificGame__popUpText">Are you sure you want to delete this post ?</p>
+            <p className="specificGame__popUpText">
+              Are you sure you want to delete this post ?
+            </p>
             <div className="specificGame__popUpBtns">
-              <button className="specificGame__popUpYes">Yes</button>
-              <button className="specificGame__popUpNo">No</button>
+              <button 
+                id="yesButton"
+                className="specificGame__popUpYes"
+                onClick={handlePopUp}
+              >
+                Yes
+              </button>
+              <button 
+                id="noButton"
+                className="specificGame__popUpNo"
+                onClick={handlePopUp}
+              >
+                No
+              </button>
             </div>
           </div>
         </div>
