@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GameCards from "./GameCards";
 import FilterForm from "./FilterForm";
+import Loading from "./Loading";
 import { UserContext } from "../contexts/User";
 import { PostsContext } from "../contexts/Posts";
 import { PublicRoutes } from "../routes/routes";
@@ -36,7 +37,7 @@ const MainPage = ({ consoleType }) => {
           break;
       }
     }
-  },[postsContextInfo.allPosts])
+  },[postsContextInfo.allPosts, postsContextInfo.playPosts, postsContextInfo.xboxPosts])
 
 
   const handleSubmit = (e) => {
@@ -117,6 +118,9 @@ const MainPage = ({ consoleType }) => {
           />
         </form>
       </main>
+      {!postsContextInfo.allPosts.length > 0 &&
+        <Loading />
+      }
     </section>
   );
 };

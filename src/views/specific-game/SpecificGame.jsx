@@ -3,13 +3,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
 import { PostsContext } from "../../contexts/Posts";
 import { UserContext } from "../../contexts/User";
+import Loading from "../../components/Loading";
 import "./SpecificGame.scss";
 
 const SpecificGame = () => {
   const [infoSpecificGame, setInfoSpecificGame] = useState({})
   const { idSpecificGame } = useParams();
   const [showDeletepostPopUp, setShowDeletepostPopUp] = useState(false)
-  const postsInfoContext = useContext(PostsContext)
+  const postsContextInfo = useContext(PostsContext)
   const userInfoContext = useContext(UserContext)
   const navigate = useNavigate();
   const messageSuccess = useRef();
@@ -34,11 +35,11 @@ const SpecificGame = () => {
 
 
   useEffect(() => {
-    if (postsInfoContext.allPosts.length > 0){
-      const specificPost = postsInfoContext.allPosts.find(item => item.post_id === idSpecificGame)
+    if (postsContextInfo.allPosts.length > 0){
+      const specificPost = postsContextInfo.allPosts.find(item => item.post_id === idSpecificGame)
       setInfoSpecificGame(specificPost)
     }
-  },[postsInfoContext.allPosts])
+  },[postsContextInfo.allPosts])
 
 
 
@@ -49,8 +50,8 @@ const SpecificGame = () => {
         .then(res => res.json())
         .then(data => {
           console.log(data)
-          const newState = postsInfoContext.allPosts.filter((item) => item.post_id !== idSpecificGame)
-          postsInfoContext.setAllPosts(newState)
+          const newState = postsContextInfo.allPosts.filter((item) => item.post_id !== idSpecificGame)
+          postsContextInfo.setAllPosts(newState)
         })
     } else {
       setShowDeletepostPopUp(false)
@@ -161,6 +162,9 @@ const SpecificGame = () => {
             </div>
           </div>
         </div>
+      }
+      {!postsContextInfo.allPosts.length > 0 &&
+        <Loading />
       }
     </section>
   );
