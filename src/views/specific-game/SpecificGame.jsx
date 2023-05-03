@@ -2,12 +2,14 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
 import { PostsContext } from "../../contexts/Posts";
+import { UserContext } from "../../contexts/User";
 import "./SpecificGame.scss";
 
 const SpecificGame = () => {
   const [infoSpecificGame, setInfoSpecificGame] = useState({})
-  const postsInfoContext = useContext(PostsContext)
   const { idSpecificGame } = useParams();
+  const postsInfoContext = useContext(PostsContext)
+  const userInfoContext = useContext(UserContext)
   const navigate = useNavigate();
   const messageSuccess = useRef();
   const textAreaRef = useRef();
@@ -84,23 +86,31 @@ const SpecificGame = () => {
           </p>
         </div>
       </div>
-      <form onSubmit={handleSubmit} className="specificGame__form">
-        <label htmlFor="textArea" className="specificGame__label">
-          write some message to exchange the game
-        </label>
-        <textarea
-          id="textArea"
-          placeholder="Write a message"
-          ref={textAreaRef}
-          className="specificGame__textArea"
-          spellCheck="false"
-        ></textarea>
-        <input
-          type="submit"
-          value="send message"
-          className="specificGame__submit"
-        />
-      </form>
+      {userInfoContext.userInfo.userId === infoSpecificGame?.user_id
+      ?
+        <div className="specificGame_deletePostContainer">
+          <button className="specificGame_deletePost">Delete this post</button>
+        </div>
+      :
+        <form onSubmit={handleSubmit} className="specificGame__form">
+          <label htmlFor="textArea" className="specificGame__label">
+            write some message to exchange the game
+          </label>
+          <textarea
+            id="textArea"
+            placeholder="Write a message"
+            ref={textAreaRef}
+            className="specificGame__textArea"
+            spellCheck="false"
+          ></textarea>
+          <input
+            type="submit"
+            value="send message"
+            className="specificGame__submit"
+          />
+        </form>
+      
+      }
       <div ref={messageSuccess} className="specificGame__success">
         Message sent successfully
       </div>
