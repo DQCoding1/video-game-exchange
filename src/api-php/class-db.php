@@ -133,5 +133,13 @@
         }
         echo json_encode($result);
     }
+    
+    
+    
+    public function deletePost($post_id){
+        $query = "DELETE FROM posts WHERE post_id = '$post_id'";
+        $this->conn->exec($query);
+        echo json_encode(array("result" => "post $post_id deleted"));
+    }
   }
 ?>

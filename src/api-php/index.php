@@ -18,6 +18,9 @@
         else if (isset($_GET["lastPostByUser"])){
           $conn->getLastPostByUser($_GET["lastPostByUser"]);        
         }
+        else if(isset($_GET["deletePost"])){
+          $conn->deletePost($_GET["deletePost"]);
+        }
          else {
           $conn->getAllPosts();
           break;
