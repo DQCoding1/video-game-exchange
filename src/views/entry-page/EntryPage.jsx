@@ -5,6 +5,7 @@ import { PostsContext } from "../../contexts/Posts";
 import playLogo from "../../assets/logos/play-logo.png";
 import xboxLogo from "../../assets/logos/xbox-logo.png";
 import "./EntryPage.scss";
+import Loading from "../../components/Loading";
 
 const EntryPage = () => {
   const postsContextInfo = useContext(PostsContext)
@@ -34,12 +35,7 @@ const EntryPage = () => {
           <img src={xboxLogo} alt="xbox logo" className="header__img" />
         </Link>
         {!postsContextInfo.allPosts.length > 0 &&
-        <div className="header__loadingMainContainer">
-          <div className="header__loadingContainer">
-            <div className="header__loadingCircle"></div>
-            <p className="header__loadingText">LOADING ...</p>
-          </div>
-        </div>
+          <Loading />
         }
       </div>
     </header>

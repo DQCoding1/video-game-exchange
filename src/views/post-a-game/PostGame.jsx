@@ -114,10 +114,12 @@ const PostGame = () => {
   }
 
 
-
   const handleClickImgContainer = () => {
     inputFileRef.current.click();
   };
+
+
+
   return (
     <section className="postGame">
       <Link to={PublicRoutes.PLAYANDXBOX} className="postGame__backToMain">
