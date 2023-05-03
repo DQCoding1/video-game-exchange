@@ -93,9 +93,10 @@
     
     public function getLastPostByUser($user_id){
         $result = array();
-        $query = "SELECT MAX(post_id) as post_id, user_id, image, name_of_game, console_type, is_new, description
-                  FROM posts 
-                  WHERE user_id = '$user_id'";
+        $query = "SELECT * FROM posts
+                  WHERE user_id = '$user_id'
+                  ORDER BY post_id DESC
+                  LIMIT 1";
         $statement = $this->conn->prepare($query);
         $statement->execute();
         while ($data = $statement->fetch()){
