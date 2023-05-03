@@ -8,6 +8,7 @@ import "./SpecificGame.scss";
 const SpecificGame = () => {
   const [infoSpecificGame, setInfoSpecificGame] = useState({})
   const { idSpecificGame } = useParams();
+  const [showDeletepostPopUp, setShowDeletepostPopUp] = useState(false)
   const postsInfoContext = useContext(PostsContext)
   const userInfoContext = useContext(UserContext)
   const navigate = useNavigate();
@@ -89,7 +90,12 @@ const SpecificGame = () => {
       {userInfoContext.userInfo.userId === infoSpecificGame?.user_id
       ?
         <div className="specificGame__deletePostContainer">
-          <button className="specificGame__deletePost">DELETE POST</button>
+          <button 
+            className="specificGame__deletePost" 
+            onClick={() => setShowDeletepostPopUp(true)}
+          >
+              DELETE POST
+          </button>
         </div>
       : 
         <form onSubmit={handleSubmit} className="specificGame__form">
@@ -113,6 +119,17 @@ const SpecificGame = () => {
       <div ref={messageSuccess} className="specificGame__success">
         Message sent successfully
       </div>
+      {showDeletepostPopUp &&
+        <div className="specificGame__popUpContainer">
+          <div className="specificGame__popUp">
+            <p className="specificGame__popUpText">Are you sure you want to delete this post ?</p>
+            <div className="specificGame__popUpBtns">
+              <button className="specificGame__popUpYes">Yes</button>
+              <button className="specificGame__popUpNo">No</button>
+            </div>
+          </div>
+        </div>
+      }
     </section>
   );
 };
