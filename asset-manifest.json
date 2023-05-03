@@ -1,42 +1,17 @@
 {
   "files": {
     "main.css": "/video-game-exchange/static/css/main.4f5cbe07.css",
-    "main.js": "/video-game-exchange/static/js/main.58933300.js",
-    "static/media/resident evil 5 playStation 4.jpg": "/video-game-exchange/static/media/resident evil 5 playStation 4.9d77bfc713649954af5b.jpg",
-    "static/media/atlas fallen xbox series.jpg": "/video-game-exchange/static/media/atlas fallen xbox series.bb81c5df8a22dc879194.jpg",
-    "static/media/fifa 21 xbox series.jpg": "/video-game-exchange/static/media/fifa 21 xbox series.c4228b39a83bffb0145e.jpg",
-    "static/media/fifa 19 xbox 360.jpg": "/video-game-exchange/static/media/fifa 19 xbox 360.e4ffd60fa9cfa7fa4352.jpg",
-    "static/media/grand theft auto playStation 5.jpg": "/video-game-exchange/static/media/grand theft auto playStation 5.850734290b06b94c9631.jpg",
-    "static/media/god of war ragnarok playStation 5.jpg": "/video-game-exchange/static/media/god of war ragnarok playStation 5.81a4d5d82f106947de29.jpg",
-    "static/media/fifa 17 playStation 3.jpg": "/video-game-exchange/static/media/fifa 17 playStation 3.0065e510d893013cfc57.jpg",
-    "static/media/god of war playStation 4.jpg": "/video-game-exchange/static/media/god of war playStation 4.bb124c425750a30b2977.jpg",
-    "static/media/god of war playStation 3.jpg": "/video-game-exchange/static/media/god of war playStation 3.fba82e52b31f79584e38.jpg",
-    "static/media/the evil within 2 playStation 4.jpg": "/video-game-exchange/static/media/the evil within 2 playStation 4.f95fa802cacc79938acb.jpg",
-    "static/media/halo infinite xbox series.jpg": "/video-game-exchange/static/media/halo infinite xbox series.4b98036062479b188355.jpg",
-    "static/media/dragon ball xenoverse 2 playStation 4.jpg": "/video-game-exchange/static/media/dragon ball xenoverse 2 playStation 4.b3b2236829805d177dfb.jpg",
-    "static/media/halo collection xbox one.jpg": "/video-game-exchange/static/media/halo collection xbox one.7310159938084dd34040.jpg",
-    "static/media/skate 3 xbox 360.jpg": "/video-game-exchange/static/media/skate 3 xbox 360.484c6a6a8e508ce30fc7.jpg",
-    "static/media/resident evil 6 xbox series.jpg": "/video-game-exchange/static/media/resident evil 6 xbox series.842acc00ae5b0fccdc38.jpg",
-    "static/media/assassins creed 3 xbox 360.jpg": "/video-game-exchange/static/media/assassins creed 3 xbox 360.f50a33b5c93abaabcd1a.jpg",
-    "static/media/fifa 17 xbox 360.jpg": "/video-game-exchange/static/media/fifa 17 xbox 360.4ce93a83a886d56202f8.jpg",
-    "static/media/ufc 3 playStation 3.jpg": "/video-game-exchange/static/media/ufc 3 playStation 3.1774e67ffc566f03bcba.jpg",
+    "main.js": "/video-game-exchange/static/js/main.6fc72172.js",
     "static/media/signUp.jpg": "/video-game-exchange/static/media/signUp.21182fba77e8dd3c5548.jpg",
-    "static/media/need for speed xbox one.jpg": "/video-game-exchange/static/media/need for speed xbox one.ffce2c85674cc321445e.jpg",
-    "static/media/hitman playStation 4.jpg": "/video-game-exchange/static/media/hitman playStation 4.9e765424ebc8cd26d52b.jpg",
-    "static/media/elden ring playStation 5.jpg": "/video-game-exchange/static/media/elden ring playStation 5.cd8ba179b4e3d07a3066.jpg",
-    "static/media/red dead redemption 2 playStation 4.jpg": "/video-game-exchange/static/media/red dead redemption 2 playStation 4.851bb991b45dc9adcf86.jpg",
     "static/media/xbox-logo.png": "/video-game-exchange/static/media/xbox-logo.8cc1c5926ccf2cabca3a.png",
-    "static/media/devil may cry 4 xbox 360.jpg": "/video-game-exchange/static/media/devil may cry 4 xbox 360.d54253bdcf49f600f0e5.jpg",
-    "static/media/silent hill xbox one.jpg": "/video-game-exchange/static/media/silent hill xbox one.1ff7a3accbe18feab1d4.jpg",
-    "static/media/far cry 6 playStation 4.jpg": "/video-game-exchange/static/media/far cry 6 playStation 4.1df609632f91d690b1cc.jpg",
     "index.html": "/video-game-exchange/index.html",
     "static/media/close.svg": "/video-game-exchange/static/media/close.08233535a9321b39bf5f4a13e34fede0.svg",
     "static/media/burger.svg": "/video-game-exchange/static/media/burger.113d59e2703636dfe157ec8ec962d598.svg",
     "main.4f5cbe07.css.map": "/video-game-exchange/static/css/main.4f5cbe07.css.map",
-    "main.58933300.js.map": "/video-game-exchange/static/js/main.58933300.js.map"
+    "main.6fc72172.js.map": "/video-game-exchange/static/js/main.6fc72172.js.map"
   },
   "entrypoints": [
     "static/css/main.4f5cbe07.css",
-    "static/js/main.58933300.js"
+    "static/js/main.6fc72172.js"
   ]
 }
