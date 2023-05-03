@@ -136,5 +136,46 @@
   &__success{
     @include showSuccessMessage();
   }
+
+  &__popUpContainer{
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $bg-color;
+  }
+  
+  &__popUp{
+    background-color: $font-color;
+    padding: 2rem;
+    border-radius: 5px;
+  }
+  
+  &__popUpText{
+    font-weight: 700;
+  }
+  
+  &__popUpBtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+  
+  &__popUpYes{
+    @include btn($success, $bg-color);
+    font-weight: 800;
+  }
+  
+  &__popUpNo{
+    @include btn($error, $bg-color);
+    font-weight: 800;
+  }
 }
   

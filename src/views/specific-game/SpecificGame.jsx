@@ -119,7 +119,7 @@ const SpecificGame = () => {
       <div ref={messageSuccess} className="specificGame__success">
         Message sent successfully
       </div>
-      {showDeletepostPopUp &&
+      {showDeletepostPopUp ||
         <div className="specificGame__popUpContainer">
           <div className="specificGame__popUp">
             <p className="specificGame__popUpText">Are you sure you want to delete this post ?</p>
