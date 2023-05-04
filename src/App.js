@@ -33,6 +33,7 @@ function App() {
             } />
             <Route path={PublicRoutes.SIGNUP} element={<SignUp />} />
             <Route path={PublicRoutes.LOGIN} element={<Login />} />
+            <Route path={PublicRoutes.DASHBOARD} element={<Dashboard />} />
             <Route path="*" element={<div>Not Found</div>} />
           </Routes>
         </BrowserRouter>
