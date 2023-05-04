@@ -5,6 +5,7 @@ import { PostsContext } from "../../contexts/Posts";
 import { UserContext } from "../../contexts/User";
 import Loading from "../../components/Loading";
 import "./SpecificGame.scss";
+import { indexUrl } from "../../consts/urls";
 
 const SpecificGame = () => {
   const [infoSpecificGame, setInfoSpecificGame] = useState({})
@@ -16,29 +17,24 @@ const SpecificGame = () => {
   const messageSuccess = useRef();
   const textAreaRef = useRef();
 
-  useEffect(() => {
-    if (infoSpecificGame.hasOwnProperty("post_id")){
-      const url = 
-        `https://videogame-exchange.000webhostapp.com/api-php/index.php?user_id=${infoSpecificGame?.user_id}`
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          // console.log(data)
-          setInfoSpecificGame({
-            ...infoSpecificGame,
-            user_name : data.user_name
-          })
-        })
-        .catch(err => console.log(err))
-    }
-  },[infoSpecificGame])
+  console.log(infoSpecificGame);
 
 
   useEffect(() => {
     if (postsContextInfo.allPosts.length > 0){
       const specificPost = postsContextInfo.allPosts.find(item => item.post_id === idSpecificGame)
-      setInfoSpecificGame(specificPost)
-    }
+      const url = indexUrl+`?user_id=${specificPost.user_id}`
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          // console.log(data)
+          setInfoSpecificGame({
+            ...specificPost,
+            user_name : data.user_name
+          })
+        })
+        .catch(err => console.log(err))
+      }
   },[postsContextInfo.allPosts])
 
 
@@ -46,7 +42,8 @@ const SpecificGame = () => {
   const handlePopUp = (e) => {
     if (e.target.id === "yesButton"){
       navigate(PublicRoutes.PLAYANDXBOX)
-      fetch(`https://videogame-exchange.000webhostapp.com/api-php/index.php?deletePost=${idSpecificGame}`)
+      const url = indexUrl+`?deletePost=${idSpecificGame}`
+      fetch(url)
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -61,7 +58,7 @@ const SpecificGame = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (localStorage.getItem("userStorage")) {
+    if (userInfoContext.userInfo.userName) {
       const value = textAreaRef.current.value.trim();
       if (value === "") {
         alert("the input can't be empty");
@@ -77,7 +74,6 @@ const SpecificGame = () => {
         }, 3000);
       }
     } else {
-      alert("You need an account")
       navigate(`${PublicRoutes.SIGNUP}`)
     }
   };

@@ -27,14 +27,18 @@ function App() {
               path={`${PublicRoutes.SPECIFICGAME}/:idSpecificGame`}
               element={<SpecificGame />}
             />
+            <Route path={PublicRoutes.SIGNUP} element={<SignUp />} />
+            <Route path={PublicRoutes.LOGIN} element={<Login />} />
+            <Route path={PrivateRoutes.DASHBOARD} element={
+              <ValidateProtectedRoutes>
+                <Dashboard />
+              </ValidateProtectedRoutes>
+            } />
             <Route path={PrivateRoutes.POSTGAME} element={
               <ValidateProtectedRoutes>
                 <PostGame />
               </ValidateProtectedRoutes>
             } />
-            <Route path={PublicRoutes.SIGNUP} element={<SignUp />} />
-            <Route path={PublicRoutes.LOGIN} element={<Login />} />
-            <Route path={PublicRoutes.DASHBOARD} element={<Dashboard />} />
             <Route path="*" element={<div>Not Found</div>} />
           </Routes>
         </BrowserRouter>

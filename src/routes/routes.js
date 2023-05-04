@@ -4,10 +4,10 @@ export const PublicRoutes = {
   XBOX: "/xbox",
   SPECIFICGAME: "/specificGame",
   SIGNUP: "/signup",
-  LOGIN: "/login",
-  DASHBOARD: "/dashboard"
+  LOGIN: "/login"
 };
 
 export const PrivateRoutes = {
   POSTGAME: "/postgame",
+  DASHBOARD: "/dashboard"
 };

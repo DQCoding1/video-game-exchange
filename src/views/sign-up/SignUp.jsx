@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
 import { UserContext } from "../../contexts/User";
 import signUpImage from "../../assets/signUp.jpg";
+import { indexUrl } from "../../consts/urls";
 import "./SignUp.scss";
 
 const initialSignUp = {
@@ -23,7 +24,7 @@ const SignUp = () => {
   const userContextInfo = useContext(UserContext)
 
   useEffect(() => {
-    const url = "https://videogame-exchange.000webhostapp.com/api-php/index.php?users_and_emails=true"
+    const url ="https://videogameexchange.000webhostapp.com/api-php/index.php?users_and_emails=true"
     fetch(url)
       .then(res => res.json())
       .then(data => {
@@ -58,7 +59,6 @@ const SignUp = () => {
         (i) => i.email === infoSignUp.email
       );
       if (repetedUser === undefined && repeatedEmail === undefined) {
-        const url = "https://videogame-exchange.000webhostapp.com/api-php/index.php";
         const optionsFetch = {
           method: "POST",
           body: JSON.stringify({
@@ -72,7 +72,7 @@ const SignUp = () => {
           }
         }
 
-        fetch(url, optionsFetch)
+        fetch(indexUrl, optionsFetch)
           .then(res => res.json())
           .then(data => {
             // console.log(data)

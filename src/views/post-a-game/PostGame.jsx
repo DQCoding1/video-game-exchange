@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
 import { UserContext } from "../../contexts/User";
 import { PostsContext } from "../../contexts/Posts";
+import { indexUrl, postGameUrl } from "../../consts/urls";
 import axios from "axios";
 import "./PostGame.scss";
 
@@ -78,20 +79,20 @@ const PostGame = () => {
           navigate(`${PublicRoutes.PLAYANDXBOX}`)
         );
       }, 3000);
-      
-      const fd = new FormData()
+
+    const fd = new FormData()
       fd.append("user_id",  userContextInfo.userInfo.userId)
-      fd.append("name_of_game",  newGame.nameOfGame)
+      fd.append("name_of_game", newGame.nameOfGame)
       fd.append("console_type",  newGame.consoleType)
       fd.append("is_new",  newGame.isNew)
       fd.append("description",  newGame.description)
       fd.append("image", inputFileRef.current.files["0"])
-      axios.post("https://videogame-exchange.000webhostapp.com/api-php/postgame.php", fd)
+      axios.post(postGameUrl, fd)
         .then(data => {
-          // console.log(data.data)
-          axios.get(`https://videogame-exchange.000webhostapp.com/api-php/index.php?lastPostByUser=${userContextInfo.userInfo.userId}`)
+          // console.log(data.data)  
+          axios.get(indexUrl+`?lastPostByUser=${userContextInfo.userInfo.userId}`)
             .then(({ data }) => {
-              console.log(data)
+              // console.log(data)
               const newState = [
                 {
                   post_id:      data[0].post_id, 
@@ -104,7 +105,7 @@ const PostGame = () => {
                 },
                 ...postsContextInfo.allPosts
               ]
-              console.log(newState);
+              // console.log(newState);
               postsContextInfo.setAllPosts(newState)
             })
             .catch(err => console.log(err))

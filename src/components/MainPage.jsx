@@ -6,7 +6,7 @@ import FilterForm from "./FilterForm";
 import Loading from "./Loading";
 import { UserContext } from "../contexts/User";
 import { PostsContext } from "../contexts/Posts";
-import { PublicRoutes } from "../routes/routes";
+import { PublicRoutes, PrivateRoutes } from "../routes/routes";
 import { consoleTypes } from "../consts/consoleTypes";
 import burgerSvg from "../assets/svg/burger.svg";
 import closeSvg from "../assets/svg/close.svg";
@@ -94,13 +94,18 @@ const MainPage = ({ consoleType }) => {
           onClick={showFormResponsive}
         ></img>
       </header>
-      <div className="section__welcome">
+      
         {userContextInfo.userInfo.userName &&
-          `🖐 Welcome ${userContextInfo.userInfo.userName} !`}
-          <Link to={PublicRoutes.DASHBOARD} className="section__seeYourPosts">
-            See your posts
-          </Link>
-      </div>
+          <div className="section__welcome">
+            🖐 Welcome ${userContextInfo.userInfo.userName} !
+            <div>
+              <Link to={PrivateRoutes.DASHBOARD} className="section__seeYourPosts">
+                See your posts
+              </Link>
+            </div>
+          </div>
+        }
+      
       <main className="section__main">
         <div className="section__cards">
           <GameCards currentPosts={currentPosts} consoleType={consoleType} />

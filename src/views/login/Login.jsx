@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PublicRoutes } from "../../routes/routes";
 import "./Login.scss";
 import { UserContext } from "../../contexts/User";
+import { indexUrl } from "../../consts/urls";
 
 const initialInfoLogin = {
   action: "login",
@@ -28,8 +29,6 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url =
-      "https://videogame-exchange.000webhostapp.com/api-php/index.php";
     const optionsFetch = {
       method: "POST",
       body: JSON.stringify({
@@ -42,7 +41,7 @@ const Login = () => {
       },
     };
 
-    fetch(url, optionsFetch)
+    fetch(indexUrl, optionsFetch)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

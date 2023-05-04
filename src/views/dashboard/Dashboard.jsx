@@ -1,24 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../../contexts/User';
 import { PostsContext } from '../../contexts/Posts';
 import { PublicRoutes } from '../../routes/routes';
 import { consoleTypes } from '../../consts/consoleTypes';
+import Loading from '../../components/Loading';
 import "./Dashboard.scss";
-import { useEffect } from 'react';
 
 
 const Dashboard = () => {
   const userContextInfo = useContext(UserContext)
-  const postContextInfo = useContext(PostsContext)
+  const postsContextInfo = useContext(PostsContext)
   const [yourPosts, setYourPosts] = useState([])
 
   useEffect(() => {
-    const yourPosts = postContextInfo.allPosts.filter(item => {
-      return item.user_id === userContextInfo.userInfo.userId
-    })
-    setYourPosts(yourPosts)
-  },[])
+    if (postsContextInfo.allPosts.length > 0){
+      const yourPosts = postsContextInfo.allPosts.filter(item => {
+        return item.user_id === userContextInfo.userInfo.userId
+      })
+      setYourPosts(yourPosts)
+    }
+  },[postsContextInfo.allPosts])
 
 
   const setButtonColor = (consoleType) => {
@@ -63,8 +65,9 @@ const Dashboard = () => {
         </article>
       ))}
       </div>
-      
-      
+      {!postsContextInfo.allPosts.length > 0 &&
+        <Loading />
+      }
     </section>
   )
 }

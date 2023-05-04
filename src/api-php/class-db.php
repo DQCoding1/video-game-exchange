@@ -1,9 +1,9 @@
 <?php
   class Db {
     private $server = "localhost";
-    private $dbname = "id20636126_db_videogame_exchange";
-    private $user =  "id20636126_root";
-    private $password = "1G){gmms8xGj}]&L";
+    private $dbname = "id20699209_dbvideogame";
+    private $user =  "id20699209_root";
+    private $password = "/!#(7k20^vyIQ0_0";
     private $conn = null;
 
     public function __construct(){
@@ -57,9 +57,9 @@
     
     
     
-    public function postgame($user_id, $image, $name_of_game, $console_type, $is_new, $description){
-        $query = "INSERT INTO posts (user_id, image, name_of_game, console_type, is_new, description )
-                  VALUES ('$user_id', '$image', '$name_of_game', '$console_type', '$is_new', '$description')";
+    public function postgame($user_id, $name_of_game, $console_type, $is_new, $description, $image){
+        $query = "INSERT INTO posts (user_id, name_of_game, console_type, is_new, description, image)
+                  VALUES ('$user_id', '$name_of_game', '$console_type', '$is_new', '$description', '$image')";
         $this->conn->exec($query);
         echo json_encode(array("result" => "posted game"));
     }

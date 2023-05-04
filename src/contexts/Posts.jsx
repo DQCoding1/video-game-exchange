@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { consoleTypes } from "../consts/consoleTypes";
+import { indexUrl } from "../consts/urls";
 
 export const PostsContext = createContext();
 
@@ -11,13 +12,13 @@ const PostsProvider = ({ children }) => {
   // console.log(allPosts);
 
   useEffect(() => {
-    fetch("https://videogame-exchange.000webhostapp.com/api-php/index.php")
-    .then((res) => res.json())
-    .then((data) => { 
-      const reversedData = [...data];
-      reversedData.reverse();
-      setAllPosts(reversedData);
-      })
+    fetch(indexUrl)
+     .then((res) => res.json())
+     .then((data) => { 
+       const reversedData = [...data];
+       reversedData.reverse();
+       setAllPosts(reversedData);
+     })
     .catch(err => console.log(err))
   }, []);
 

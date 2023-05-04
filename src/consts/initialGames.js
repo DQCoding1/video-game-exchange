@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const allInitialGames = [
   {
-    id: 1,
+    id: 7,
     userName: "user1",
     nameOfGame: "fifa 17",
     consoleType: "xbox 360",
@@ -11,7 +11,7 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/fifa 17 xbox 360.jpg")
   },
   {
-    id: 2,
+    id: 5,
     userName: "user3",
     nameOfGame: "fifa 21",
     consoleType: "xbox series",
@@ -29,16 +29,16 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/god of war ragnarok playStation 5.jpg")
   },
   {
-    id: 4,
+    id: 1,
     userName: "user1",
     nameOfGame: "need for speed",
     consoleType: "xbox one",
     isNew: true,
-    description: "if you're interested send me a message",
+    description: "if you are interested send me a message",
     image: require("../assets/gamesImages/need for speed xbox one.jpg")
   },
   {
-    id: 5,
+    id: 2,
     userName: "user4",
     nameOfGame: "ufc 3",
     consoleType: "playStation 3",
@@ -56,16 +56,16 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/hitman playStation 4.jpg")
   },
   {
-    id: 7,
+    id: 4,
     userName: "user6",
     nameOfGame: "devil may cry 4",
     consoleType: "xbox 360",
     isNew: true,
-    description: "if you're interested send me a message",
+    description: "if you are interested send me a message",
     image: require("../assets/gamesImages/devil may cry 4 xbox 360.jpg")
   },
   {
-    id: 8,
+    id: 6,
     userName: "user3",
     nameOfGame: "silent hill",
     consoleType: "xbox one",
@@ -74,7 +74,7 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/silent hill xbox one.jpg")
   },
   {
-    id: 9,
+    id: 8,
     userName: "user2",
     nameOfGame: "assassins creed 3",
     consoleType: "xbox 360",
@@ -88,20 +88,20 @@ export const allInitialGames = [
     nameOfGame: "resident evil 6",
     consoleType: "xbox series",
     isNew: false,
-    description: "the game is used but it's working like a new one",
+    description: "the game is used but it is working like a new one",
     image: require("../assets/gamesImages/resident evil 6 xbox series.jpg")
   },
   {
-    id: 11,
+    id: 9,
     userName: "user4",
     nameOfGame: "resident evil 5",
     consoleType: "playStation 4",
     isNew: true,
-    description: "if you're interested send me a message",
+    description: "if you are interested send me a message",
     image: require("../assets/gamesImages/resident evil 5 playStation 4.jpg")
   },
   {
-    id: 12,
+    id: 3,
     userName: "user1",
     nameOfGame: "halo collection",
     consoleType: "xbox one",
@@ -110,16 +110,16 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/halo collection xbox one.jpg")
   },
   {
-    id: 13,
+    id: 7,
     userName: "user6",
     nameOfGame: "dragon ball xenoverse 2",
     consoleType: "playStation 4",
     isNew: true,
-    description: "if you're interested send me a message",
+    description: "if you are interested send me a message",
     image: require("../assets/gamesImages/dragon ball xenoverse 2 playStation 4.jpg")
   },
   {
-    id: 14,
+    id: 9,
     userName: "user5",
     nameOfGame: "far cry 6",
     consoleType: "playStation 4",
@@ -128,7 +128,7 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/far cry 6 playStation 4.jpg")
   },
   {
-    id: 15,
+    id: 1,
     userName: "user2",
     nameOfGame: "the evil within",
     consoleType: "xbox one",
@@ -137,16 +137,16 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/the evil within xbox one.jpg")
   },
   {
-    id: 16,
+    id: 4,
     userName: "user1",
     nameOfGame: "the evil within 2",
     consoleType: "playStation 4",
     isNew: false,
-    description: "the game is used but it's working like a new one",
+    description: "the game is used but it is working like a new one",
     image: require("../assets/gamesImages/the evil within 2 playStation 4.jpg")
   },
   {
-    id: 17,
+    id: 2,
     userName: "user4",
     nameOfGame: "elden ring",
     consoleType: "playStation 5",
@@ -155,7 +155,7 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/elden ring playStation 5.jpg")
   },
   {
-    id: 18,
+    id: 8,
     userName: "user2",
     nameOfGame: "fifa 19",
     consoleType: "xbox 360",
@@ -164,16 +164,16 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/fifa 19 xbox 360.jpg")
   },
   {
-    id: 19,
+    id: 6,
     userName: "user1",
     nameOfGame: "grand theft auto",
     consoleType: "playStation 5",
     isNew: true,
-    description: "if you're interested send me a message",
+    description: "if you are interested send me a message",
     image: require("../assets/gamesImages/grand theft auto playStation 5.jpg")
   },
   {
-    id: 20,
+    id: 5,
     userName: "user6",
     nameOfGame: "atlas fallen",
     consoleType: "xbox series",
@@ -182,7 +182,7 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/atlas fallen xbox series.jpg")
   },
   {
-    id: 21,
+    id: 10,
     userName: "user5",
     nameOfGame: "fifa 17",
     consoleType: "playStation 3",
@@ -191,16 +191,16 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/fifa 17 playStation 3.jpg")
   },
   {
-    id: 22,
+    id: 5,
     userName: "user1",
     nameOfGame: "halo infinite",
     consoleType: "xbox series",
     isNew: false,
-    description: "if you're interested send me a message",
+    description: "if you are interested send me a message",
     image: require("../assets/gamesImages/halo infinite xbox series.jpg")
   },
   {
-    id: 23,
+    id: 2,
     userName: "user3",
     nameOfGame: "god of war",
     consoleType: "playStation 3",
@@ -209,7 +209,7 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/god of war playStation 3.jpg")
   },
   {
-    id: 24,
+    id: 9,
     userName: "user2",
     nameOfGame: "skate 3",
     consoleType: "xbox 360",
@@ -218,21 +218,21 @@ export const allInitialGames = [
     image: require("../assets/gamesImages/skate 3 xbox 360.jpg")
   },
   {
-    id: 25,
+    id: 6,
     userName: "user2",
     nameOfGame: "god of war",
-    consoleType: "playStation 4",
+    consoleType: "playStation 4", 
     isNew: true,
-    description: "if you're interested send me a message",
+    description: "if you are interested send me a message",
     image: require("../assets/gamesImages/god of war playStation 4.jpg")
   },
   {
-    id: 26,
+    id: 4,
     userName: "user5",
     nameOfGame: "red dead redemption 2",
     consoleType: "playStation 4",
     isNew: false,
-    description: "the game is used but it's working like a new one",
+    description: "the game is used but it is working like a new one",
     image: require("../assets/gamesImages/red dead redemption 2 playStation 4.jpg")
-  },
+  }
 ];
