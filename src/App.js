@@ -11,6 +11,7 @@ import SignUp from "./views/sign-up/SignUp";
 import Login from "./views/login/Login";
 import UserProvider from "./contexts/User";
 import PostsProvider from "./contexts/Posts";
+import Dashboard from "./views/dashboard/Dashboard";
 
 function App() {
   return (

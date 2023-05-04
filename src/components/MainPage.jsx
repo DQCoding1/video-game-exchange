@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import GameCards from "./GameCards";
 import FilterForm from "./FilterForm";
@@ -96,6 +97,9 @@ const MainPage = ({ consoleType }) => {
       <div className="section__welcome">
         {userContextInfo.userInfo.userName &&
           `🖐 Welcome ${userContextInfo.userInfo.userName} !`}
+          <Link to={PublicRoutes.DASHBOARD} className="section__seeYourPosts">
+            See your posts
+          </Link>
       </div>
       <main className="section__main">
         <div className="section__cards">

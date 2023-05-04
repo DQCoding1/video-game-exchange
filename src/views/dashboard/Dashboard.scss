@@ -1,0 +1,66 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.dashboard{
+  width: 100%;
+  background-color: $bg-color;
+  color: $font-color;
+
+  &__yourPostsContainer{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+.dashboard__cards{
+  width: 100%;
+  display: grid;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  flex-grow: 1;
+  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+
+  @media (max-width: 480px){
+    padding: .8rem;
+  }    
+}
+
+.article{
+  border: 1px solid $font-color;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: grid;
+  height: 500px;
+
+  &__img{
+    width: 100%;
+    height: 270px;
+    object-fit: contain;
+  }
+  
+  &__texts{
+    display: grid;  
+    padding: 1rem;
+    text-align: center;
+    gap: .5rem;  
+
+    @media (max-width:480px) {
+      padding: .5rem;
+    }
+  }
+  
+
+  &__linkPlay{
+    @include btn($play-color, $font-color);
+    text-decoration: none;
+  }
+
+  &__linkXbox{
+    @include btn($xbox-color, $font-color);
+    text-decoration: none;  
+  }
+}
