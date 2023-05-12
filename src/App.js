@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { PrivateRoutes, PublicRoutes } from "./routes/routes";
 import EntryPage from "./views/entry-page/EntryPage";
 import PlayAndXbox from "./views/main-page/PlayAndXbox";
@@ -17,9 +17,9 @@ function App() {
   return (
     <UserProvider>
       <PostsProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
-            <Route path="/video-game-exchange" element={<EntryPage />} />
+            <Route path={PublicRoutes.ENTRY} element={<EntryPage />} />
             <Route path={PublicRoutes.PLAYANDXBOX} element={<PlayAndXbox />} />
             <Route path={PublicRoutes.PLAYSTATION} element={<PlayStation />} />
             <Route path={PublicRoutes.XBOX} element={<Xbox />} />
@@ -41,7 +41,7 @@ function App() {
             } />
             <Route path="*" element={<div>Not Found</div>} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </PostsProvider>
     </UserProvider>
   );

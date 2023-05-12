@@ -1,4 +1,5 @@
 export const PublicRoutes = {
+  ENTRY: "/",
   PLAYANDXBOX: "/playandxbox",
   PLAYSTATION: "/playstation",
   XBOX: "/xbox",
