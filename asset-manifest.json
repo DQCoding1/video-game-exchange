@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/video-game-exchange/static/css/main.cc27bca1.css",
-    "main.js": "/video-game-exchange/static/js/main.5307cb91.js",
+    "main.js": "/video-game-exchange/static/js/main.4618af52.js",
     "static/media/signUp.jpg": "/video-game-exchange/static/media/signUp.21182fba77e8dd3c5548.jpg",
     "static/media/xbox-logo.png": "/video-game-exchange/static/media/xbox-logo.8cc1c5926ccf2cabca3a.png",
     "index.html": "/video-game-exchange/index.html",
     "static/media/close.svg": "/video-game-exchange/static/media/close.08233535a9321b39bf5f4a13e34fede0.svg",
     "static/media/burger.svg": "/video-game-exchange/static/media/burger.113d59e2703636dfe157ec8ec962d598.svg",
     "main.cc27bca1.css.map": "/video-game-exchange/static/css/main.cc27bca1.css.map",
-    "main.5307cb91.js.map": "/video-game-exchange/static/js/main.5307cb91.js.map"
+    "main.4618af52.js.map": "/video-game-exchange/static/js/main.4618af52.js.map"
   },
   "entrypoints": [
     "static/css/main.cc27bca1.css",
-    "static/js/main.5307cb91.js"
+    "static/js/main.4618af52.js"
   ]
 }
