@@ -151,7 +151,7 @@ const SignUp = () => {
             value={infoSignUp.password}
             onChange={handleChange}
           />
-          <input type="submit" value="send" className="signUp__submit" />
+          <button type="submit" className="signUp__submit">Send</button>
           <div className="signUp__loginContainer">
             <Link to={PublicRoutes.LOGIN} className="signUp__login">Login</Link>
           </div>

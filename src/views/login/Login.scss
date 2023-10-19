@@ -1,92 +1,85 @@
-@import '../../styles/variables.scss';
-@import '../../styles/mixins.scss';
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
-.login{
-  width: 100%;
-  height: 100vh;
-  background-color: $bg-color;
-  color: $font-color;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-
-  &__backToMain{
+.login {
+    width: 100%;
+    height: 100vh;
+    background-color: $bg-color;
     color: $font-color;
-    opacity: .7;
-    
-    &:hover{
-      opacity: 1;
-    }
-  }
-
-  &__form{
-    width: 25%;
-    border: 2px solid $font-color;
-    border-radius: 5px;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    border: 2px solid grey;
-    box-shadow: 0px 0px 10px rgb(102, 102, 102);
+    gap: 2.5rem;
 
-    @media (max-width:700px){
-      width: 60%;
+    &__backToMain {
+        color: $font-color;
+        opacity: 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
-    @media (max-width:400px){
-      width: 80%;
+    &__form {
+        width: 25%;
+        border: 2px solid $font-color;
+        border-radius: 5px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        border: 2px solid grey;
+        box-shadow: 0px 7px 5px 2px rgba(59, 59, 59, 0.3);
+
+        @media (max-width: 700px) {
+            width: 60%;
+        }
+
+        @media (max-width: 400px) {
+            width: 80%;
+        }
     }
-  }
 
-  &__incorrectPassword{
-    color: #e71111;
-  }
-  
-  &__correctCredentials{
-    color: #25dd1f;
-  }
-
-  &__userDoesNotExist{
-    color: #f2ee11;
-  }
-  
-  &__inputContainer{
-    display: flex;
-    gap: .5rem;
-    flex-direction: column;
-  }
-
-  &__title{
-    font-size: 2rem;
-  }
-
-
-  &__passwordInput,
-  &__usernameInput{
-    width: 100%;
-    @include borderInput();
-  }
-
-  &__submit{
-    @include btn($font-color, $bg-color);
-    width: 65%;
-    padding: .5rem;
-    font-family: inherit;
-    font-weight: 600;
-    
-    @media (max-width:1000px){
-      width: 40%;
+    &__incorrectPassword {
+        color: #e71111;
     }
-  }
 
-  &__createAccount{
-    color: $links;
-    align-self: flex-end;
-    font-size: .9rem;
-  }
+    &__correctCredentials {
+        color: #25dd1f;
+    }
+
+    &__userDoesNotExist {
+        color: #f2ee11;
+    }
+
+    &__inputContainer {
+        display: flex;
+        gap: 0.5rem;
+        flex-direction: column;
+    }
+
+    &__title {
+        font-size: 2rem;
+    }
+
+    &__passwordInput,
+    &__usernameInput {
+        width: 100%;
+        @include borderInput();
+    }
+
+    &__submit {
+        @include btnOutlined($font-color, $bg-color);
+        margin-top: 1rem;
+        width: 55%;
+    }
+
+    &__createAccount {
+        color: $links;
+        align-self: flex-end;
+        font-size: 0.9rem;
+    }
 }

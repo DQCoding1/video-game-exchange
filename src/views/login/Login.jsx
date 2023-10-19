@@ -109,12 +109,11 @@ const Login = () => {
             className="login__passwordInput"
             />
         </div>
-        <input
+        <button
           type="submit"
           name="Login"
-          value="Login"
           className="login__submit"
-        />
+        >Login</button>
         <Link to={PublicRoutes.SIGNUP} className="login__createAccount">
           Create an account
         </Link>

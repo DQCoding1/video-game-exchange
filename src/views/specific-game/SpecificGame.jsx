@@ -124,11 +124,11 @@ const SpecificGame = () => {
             className="specificGame__textArea"
             spellCheck="false"
           ></textarea>
-          <input
+          <button
             type="submit"
-            value="send message"
+            
             className="specificGame__submit"
-          />
+          >Send message</button>
         </form> 
       } 
       <div ref={messageSuccess} className="specificGame__success">
